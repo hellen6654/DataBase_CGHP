@@ -5,9 +5,8 @@
 ![](https://i.imgur.com/ARZ65pO.png)
 - 如果不知道python版本 去控制台的解除安裝程式 可以看版本和位元
 - 如果python版本不是3.7.0 或 不是64bit的 先到控制台解除安裝python 
-
-- 執行 python-3.7.0-amd64並在安裝第一步務必把最下面的Add python 3.7 to PATH打勾 再安裝
 ![](https://i.imgur.com/rlCsjiv.png)
+- 執行 python-3.7.0-amd64並在安裝第一步務必把最下面的Add python 3.7 to PATH打勾 再安裝
 ## Step2.執行Install_Env
 ![](https://i.imgur.com/bAU3LQM.png)
 
