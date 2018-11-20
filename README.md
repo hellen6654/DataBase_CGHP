@@ -17,4 +17,8 @@
 - 如果要中止 切回cmd視窗 按下ctrl+c 就會中止了
 - 中止之後網頁連不上是正常現象
 - 要開啟只須在打開RunServer.bat即可
-- 儘管試，如果不小心試出問題，想要重來，把CGHP資料夾刪除，解壓縮CGHP_init，並把CGHP_init資料夾裡面的CGHP資料夾放到manage.py和RunServer.bat相同資料夾裡即可
+## 4.開始亂玩Django吧！
+- 官方教學：https://docs.djangoproject.com/en/2.1/intro/tutorial01/
+- 我把 "py manage.py runserver" 這句指令包進RunServer.bat裡面了，這樣就不用一直打指令了。
+- 儘管試，如果不小心試出問題，想要重來，把CGHP資料夾刪除，解壓縮CGHP_init，並把CGHP_init資料夾裡面的CGHP資料夾放到manage.py和RunServer.bat相同資料夾裡就可以了
+- 如果有修改程式碼，建議先關閉RunServer.bat，再進行修改。修改完，在開啟RunServer.bat
