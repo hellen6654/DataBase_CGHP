@@ -1,19 +1,19 @@
-# 環境安裝說明
-## Step1.下載＆安裝python 3.7.0-64bit
-- 如果有裝過python3.7.0-64bit的就可以不用安裝python
-- python3.7.0-64bit下載網址：https://www.python.org/ftp/python/3.7.0/python-3.7.0-amd64.exe
-- ![](https://i.imgur.com/ARZ65pO.png)
-- 如果不知道python版本 去控制台的解除安裝程式 可以看版本和位元
-- 如果python版本不是3.7.0 或 不是64bit的 先到控制台解除安裝python 
+# DataBase_CGHP 資料庫系統課程實做練習
 
-- 執行python-3.7.0-amd64
-- ![](https://i.imgur.com/rlCsjiv.png)
-※如果有安裝python 在安裝第一步務必先把最下面的Add python 3.7 to PATH打勾 再安裝
-## Step2.執行Install_Env
-![](https://i.imgur.com/bAU3LQM.png)
+## 0.請先Download或Clone此repo
+![](https://i.imgur.com/emwIaXN.png)
 
-- 安裝完 就完成了python 虛擬環境(Visualenv)的建置
+## 1.請先開啟InstallEnv資料夾 並依照"環境安裝說明"的步驟執行
+環境安裝說明：https://hackmd.io/s/rJV-Itb07
+![](https://i.imgur.com/HJBORSH.png)
+![](https://i.imgur.com/Qm2yFVv.png)
 
-- 使用Visualenv的好處
-    多到說不完我就不說了,自己去google
-    
+## 2.開啟RunServer.bat
+![](https://i.imgur.com/DyDVpUA.png)
+![](https://i.imgur.com/Luer8oS.png)
+
+## 3.開啟任意瀏覽器 並輸入 127.0.0.1:8000 或 localhost:8000 出現此畫面即建置環境完成
+![](https://i.imgur.com/R5kwQsp.png)
+- 如果要中止 切回cmd視窗 按下ctrl+c 就會中止了
+- 中止之後網頁連不上是正常現象
+- 要開啟只須在打開RunServer.bat即可
