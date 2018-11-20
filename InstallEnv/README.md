@@ -1,7 +1,7 @@
 # 環境安裝說明
 ## Step1.下載＆安裝python 3.7.0-64bit
 - 如果有裝過python3.7.0-64bit的就可以不用安裝python
-- 下載網址：https://www.python.org/ftp/python/3.7.0/python-3.7.0-amd64.exe
+- python3.7.0-64bit下載網址：https://www.python.org/ftp/python/3.7.0/python-3.7.0-amd64.exe
 ![](https://i.imgur.com/ARZ65pO.png)
 - 如果不知道python版本 去控制台的解除安裝程式 可以看版本和位元
 - 如果python版本不是3.7.0 或 不是64bit的 先到控制台解除安裝python 
