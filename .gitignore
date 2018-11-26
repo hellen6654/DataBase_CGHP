@@ -190,4 +190,5 @@ dmypy.json
 pyvenv.cfg
 pip-selfcheck.json
 .vscode
+!*.exe
 # End of https://www.gitignore.io/api/python,django
