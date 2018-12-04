@@ -1,1 +1,1 @@
-cmd /c "workon CGHP & python ./manage.py runserver"
+cmd /k "workon CGHP & python ./manage.py runserver"

@@ -1,0 +1,7 @@
+管理帳密
+admin
+adminadmin
+
+會員帳密
+user
+user1234
