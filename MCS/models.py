@@ -45,7 +45,7 @@ class Member(models.Model):
 
     # 會員註冊時自訂的登入帳號
     member_id = models.CharField(
-        verbose_name='會員帳號', max_length=32, null=False, primary_key=True)
+        verbose_name='會員編號', max_length=32, null=False, primary_key=True)
 
 class Employee(models.Model):
 	# 指向 User 的 primary_key = User.user_id
@@ -54,7 +54,7 @@ class Employee(models.Model):
 
     # admin分配的帳號, 用來登入
     employee_id = models.CharField(
-        verbose_name='員工帳號', max_length=32, null=False, primary_key=True)
+        verbose_name='員工編號', max_length=32, null=False, primary_key=True)
 
     title = models.CharField(
         verbose_name='員工職稱', max_length=8, null=False)
