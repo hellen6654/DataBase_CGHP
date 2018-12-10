@@ -31,10 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'pizza',
-    'FS.apps.FsConfig',
-    'PSMS.apps.PsmsConfig',
+    'FSMS.apps.FsmsConfig',
     'MCS.apps.McsConfig',
+    'PSMS.apps.PsmsConfig',
+    'SOS.apps.SosConfig',
+    'FS.apps.FsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
