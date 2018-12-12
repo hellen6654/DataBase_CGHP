@@ -10,7 +10,7 @@ class Order(models.Model):
 
     # 哪一個 會員 產生的訂單
     member_id = models.ForeignKey(
-        Member, verbose_name='會員身分證號碼', on_delete=models.CASCADE, null=False)
+        Member, verbose_name='會員編號', on_delete=models.CASCADE, null=False)
     total_price = models.PositiveIntegerField(
     	verbose_name='訂單總價', null=False)
     ordered_date = models.DateTimeField(

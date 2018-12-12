@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+# Define user model
+AUTH_USER_MODEL = 'MCS.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

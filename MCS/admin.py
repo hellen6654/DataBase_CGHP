@@ -1,12 +1,13 @@
 from django.contrib import admin
-from .models import User, Member, Employee
-# Register your models here.
-@admin.register(User)
-class UserAdmin(admin.ModelAdmin):
-    pass
-@admin.register(Member)
-class UserAdmin(admin.ModelAdmin):
-    pass
-@admin.register(Employee)
-class UserAdmin(admin.ModelAdmin):
-    pass
+from django.contrib.auth import get_user_model
+from django.contrib.auth.admin import UserAdmin
+
+from .forms import CustomUserCreationForm, CustomUserChangeForm
+from .models import CustomUser
+
+class CustomUserAdmin(UserAdmin):
+    model = CustomUser
+    add_form = CustomUserCreationForm
+    form = CustomUserChangeForm
+
+admin.site.register(CustomUser, CustomUserAdmin)

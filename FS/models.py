@@ -6,7 +6,7 @@ from PSMS.models import Pizza
 
 class Rate(models.Model):
     member_id = models.ForeignKey(
-        Member, verbose_name='會員帳號', on_delete=models.CASCADE, null=False)
+        Member, verbose_name='會員編號', on_delete=models.CASCADE, null=False)
 
     pizza_no = models.ForeignKey(
         Pizza, verbose_name='披薩編號', on_delete=models.CASCADE, null=False)

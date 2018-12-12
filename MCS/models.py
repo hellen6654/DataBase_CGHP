@@ -3,7 +3,37 @@ from django.db import models
 import uuid
 from django.core.validators import RegexValidator
 from django.core.validators import MaxValueValidator, MinValueValidator
+#
+from django.contrib.auth.models import AbstractUser, UserManager
 
+
+class CustomUserManager(UserManager):
+    pass
+
+class CustomUser(AbstractUser):
+    pass
+    
+class Member(models.Model):
+    # 指向 User 的 primary_key = User.user_id
+    user_id = models.OneToOneField(
+        CustomUser, verbose_name='會員的使用者編號', on_delete=models.CASCADE, null=False)
+
+    # 會員註冊時自訂的登入帳號
+    member_id = models.CharField(
+        verbose_name='會員編號', max_length=32, null=False, primary_key=True)
+
+class Employee(models.Model):
+    # 指向 User 的 primary_key = User.user_id
+    user_id = models.OneToOneField(
+        CustomUser, verbose_name='員工的使用者編號', on_delete=models.CASCADE, null=False)
+
+    # admin分配的帳號, 用來登入
+    employee_id = models.CharField(
+        verbose_name='員工編號', max_length=32, null=False, primary_key=True)
+
+    title = models.CharField(
+        verbose_name='員工職稱', max_length=8, null=False)
+'''
 class User(models.Model):
     GENDER_FEMALE = 'F'
     GENDER_MALE = 'M'
@@ -58,3 +88,4 @@ class Employee(models.Model):
 
     title = models.CharField(
         verbose_name='員工職稱', max_length=8, null=False)
+'''
