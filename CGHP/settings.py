@@ -25,11 +25,12 @@ SECRET_KEY = '^^)sr210qef&iv8tq7-%7!!28bnn__e4h#uhva_&3reulnav%f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
 INSTALLED_APPS = [
+    'pizza',
     'FSMS.apps.FsmsConfig',
     'MCS.apps.McsConfig',
     'PSMS.apps.PsmsConfig',
@@ -61,7 +62,7 @@ ROOT_URLCONF = 'CGHP.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,9 +125,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'assets'),
-]
+
+STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'assets'),
+# ]
