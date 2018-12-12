@@ -1,5 +1,5 @@
 管理帳密
-admin
+admin@example.com
 adminadmin
 
 會員帳密
