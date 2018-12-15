@@ -7,6 +7,8 @@ class Pizza(models.Model):
         verbose_name='披薩編號', primary_key=True, null=False)
     name = models.CharField(
         verbose_name='披薩名稱', max_length=20, null=False)
+    image = models.CharField(
+        verbose_name='披薩圖片', null=True, max_length=50)
     description = models.TextField(
         verbose_name='披薩描述')
     price = models.PositiveIntegerField(
