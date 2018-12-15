@@ -5,8 +5,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from .models import CustomUser, Member, Employee
 
-
-#@admin.register(CustomUser)
 class CustomUserAdmin(DjangoUserAdmin):
     # 編輯使用者時顯示的欄位
     fieldsets = (
@@ -27,9 +25,7 @@ class CustomUserAdmin(DjangoUserAdmin):
     #search_fields = ('email', 'last_name','first_name')
     ordering = ('email','id_TW')
 
-@admin.register(Member)
-class MemberAdmin(admin.ModelAdmin):
-    admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(CustomUser, CustomUserAdmin)
 
 
 #admin.site.register(CustomUser, CustomUserAdmin)
