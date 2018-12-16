@@ -27,6 +27,14 @@ class CustomUserAdmin(DjangoUserAdmin):
 
 admin.site.register(CustomUser, CustomUserAdmin)
 
+@admin.register(Member)
+class MemberAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(Employee)
+class EmployeeAdmin(admin.ModelAdmin):
+    pass
+
 
 #admin.site.register(CustomUser, CustomUserAdmin)
 '''

@@ -3,16 +3,21 @@ from django.db import models
 import uuid
 from django.core.validators import RegexValidator
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.contrib.auth.models import AbstractUser, BaseUserManager, Group
 from django.utils.translation import ugettext_lazy as _
-'''
-from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
-from django.contrib.contenttypes.models import ContentType
-#'''
+
+
+def GetNameGroup(name):
+    try:
+        group = Group.objects.get(name=name)
+    except Group.DoesNotExist:
+        group = Group.objects.create(name=name)
+    return group
+
 class CustomUserManager(BaseUserManager):
     use_in_migrations = True
     def _create_user(self, email, password, **extra_fields):
-        """Create and save a User with the given email and password."""
+        #Create and save a User with the given email and password.
         if not email:
             raise ValueError('The given email must be set')
         email = self.normalize_email(email)
@@ -59,11 +64,7 @@ class CustomUser(AbstractUser):
     discount = models.DecimalField(
         verbose_name='使用者折扣', max_digits=3, decimal_places=2, null=False, default=1.00,
         validators=[MinValueValidator(0, '0<=使用者折扣<=1'), MaxValueValidator(1, '0<=使用者折扣<=1')])
-    '''
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.UUIDField()
-    content_object = GenericForeignKey('content_type', 'object_id')
-    #'''
+
     username = None
     email = models.EmailField(_('email address'), primary_key=True)
     last_name = models.CharField(verbose_name='姓', max_length=4, null=False, default='')
@@ -73,7 +74,6 @@ class CustomUser(AbstractUser):
     objects = CustomUserManager()
 
 class Member(models.Model):
-    #user_id = GenericRelation(CustomUser)
     #'''
     user_id = models.OneToOneField(
         CustomUser, verbose_name='會員的使用者編號', on_delete=models.CASCADE, null=False, related_name='Member')
@@ -81,9 +81,15 @@ class Member(models.Model):
     member_id = models.UUIDField(
         verbose_name='會員編號', null=False, primary_key=True,
         default=uuid.uuid4, editable=False)
+    
+    @classmethod
+    def create(cls, user):
+        group = GetNameGroup('Member')
+        user.groups.add(group)
+        member = cls(user_id=user)
+        return member
 
 class Employee(models.Model):
-    #user_id = GenericRelation(CustomUser)
     #'''
     user_id = models.OneToOneField(
         CustomUser, verbose_name='會員的使用者編號', on_delete=models.CASCADE, null=False,related_name='Employee')
@@ -95,3 +101,10 @@ class Employee(models.Model):
 
     title = models.CharField(
         verbose_name='員工職稱', max_length=8, null=False)
+
+    @classmethod
+    def create(cls, user, title):
+        group = GetNameGroup('Employee')
+        user.groups.add(group)
+        employee = cls(user_id=user, title=title)
+        return employee
