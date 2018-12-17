@@ -6,14 +6,6 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.models import AbstractUser, BaseUserManager, Group
 from django.utils.translation import ugettext_lazy as _
 
-
-def GetNameGroup(name):
-    try:
-        group = Group.objects.get(name=name)
-    except Group.DoesNotExist:
-        group = Group.objects.create(name=name)
-    return group
-
 class CustomUserManager(BaseUserManager):
     use_in_migrations = True
     def _create_user(self, email, password, **extra_fields):
@@ -84,7 +76,10 @@ class Member(models.Model):
     
     @classmethod
     def create(cls, user):
-        group = GetNameGroup('Member')
+        try:
+            group = Group.objects.get(name='Member')
+        except Group.DoesNotExist:
+            group = Group.objects.create(name='Member')
         user.groups.add(group)
         member = cls(user_id=user)
         return member
@@ -104,7 +99,13 @@ class Employee(models.Model):
 
     @classmethod
     def create(cls, user, title):
-        group = GetNameGroup('Employee')
+        # 群組設定
+        try:
+            group = Group.objects.get(name='Employee')
+        except Group.DoesNotExist:
+            group = Group.objects.create(name='Employee')
         user.groups.add(group)
+        user.is_staff = True
+        # 創建新員工
         employee = cls(user_id=user, title=title)
         return employee
