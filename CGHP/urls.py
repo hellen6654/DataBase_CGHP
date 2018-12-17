@@ -15,11 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from pizza.views import pizza_list,home
+from django.conf.urls.static import static
+from django.conf import settings
+from PSMS.views import home, menu, about
 
 urlpatterns = [
+    path('', home, name='home'),
     path('admin/', admin.site.urls),
     path('accounts/', include('MCS.urls')),
-    path('index/',home,name='home'),
-    path('pizza_list/',pizza_list,name='pizza_list')
-]
+    path('menu/', menu, name='menu'),
+    path('about/', about, name='about'),
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

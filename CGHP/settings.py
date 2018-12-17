@@ -30,7 +30,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'pizza',
     'FSMS.apps.FsmsConfig',
     'MCS.apps.McsConfig',
     'PSMS.apps.PsmsConfig',
@@ -113,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'zh-hant'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Taipei'
 
 USE_I18N = True
 
@@ -128,8 +127,5 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'assets'),
-# ]
+MEDIA_ROOT = os.path.join(BASE_DIR,'pic')
+MEDIA_URL = '/pic/'

@@ -7,10 +7,10 @@ class Pizza(models.Model):
         verbose_name='披薩編號', primary_key=True, null=False)
     name = models.CharField(
         verbose_name='披薩名稱', max_length=20, null=False)
-    image = models.CharField(
-        verbose_name='披薩圖片', null=True, max_length=50)
+    element = models.TextField(
+        verbose_name='披薩餡料', null=True)
     description = models.TextField(
-        verbose_name='披薩描述')
+        verbose_name='披薩描述', max_length=50)
     price = models.PositiveIntegerField(
         verbose_name='披薩價格', null=False)
     size = models.CharField(
@@ -22,12 +22,20 @@ class Pizza(models.Model):
     sales_volume = models.PositiveIntegerField(
         verbose_name='披薩銷售量', null=False, default=0) 
     click_count = models.PositiveIntegerField(
-        verbose_name='披薩點擊量', null=False, default=0)    
-    isVegetarian = models.BooleanField(
-        verbose_name='是否為素食披薩', null=False)
-    # 1 <= stars <= 5
+        verbose_name='披薩點擊量', null=False, default=0)     
+    kind_chose = (
+        ('Beef', '牛肉'),
+        ('Chicken', '雞肉'),
+        ('Mix', '混合'),
+        ('Pork', '豬肉'),
+        ('Seafood', '海鮮'),
+        ('Vegetable', '蔬菜') 
+    )
+    kind_chose = models.CharField(
+        verbose_name='種類', choices=kind_chose, max_length=10, null=True)
     stars = models.DecimalField(
-        verbose_name='披薩評分', max_digits=1, decimal_places=0, null=False,  
-        validators=[MinValueValidator(1, '最低1分'), MaxValueValidator(5, '最多5分')]) #小數
+        verbose_name='披薩評分', max_digits=1, decimal_places=0, null=False,   
+        validators=[MinValueValidator(1, '最低1分'), MaxValueValidator(5, '最多5分')])
+    pic = models.ImageField(upload_to='pizza-imgae/', null=True)
     def __str__(self):
         return self.name
