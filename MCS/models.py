@@ -106,6 +106,7 @@ class Employee(models.Model):
             group = Group.objects.create(name='Employee')
         user.groups.add(group)
         user.is_staff = True
+        user.save()
         # 創建新員工
         employee = cls(user_id=user, title=title)
         return employee
