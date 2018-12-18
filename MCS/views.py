@@ -73,9 +73,9 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
+# main home
 def MCS_View(request):
     message = ''
     if 'login' in request.POST:
         message = login(request)
-    elif 'register-member' in request.POST:
-        Create_Member_View(request)
+    return Create_Member_View(request)

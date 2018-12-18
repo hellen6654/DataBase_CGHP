@@ -186,7 +186,7 @@
             <div class="accountbox text-left">
                 {% if request.user.is_authenticated %}
                     <p>{{ request.user }}</p>
-                    <a href="/accounts/logout/"><button type="text" class="food__btn" ><span>登出</span></button></a>
+                    <a href="/logout/"><button type="text" class="food__btn" ><span>登出</span></button></a>
                 {% else %}
                 <ul class="nav accountbox__filters" id="myTab" role="tablist">
                     <li>
