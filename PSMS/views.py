@@ -3,6 +3,7 @@ from .models import Pizza
 # Create your views here.
 
 def home(request):
+    # 實作 登入註冊登出等功能
     return render(request,'index.html')
 def menu(request):
     pizzas = Pizza.objects.all()

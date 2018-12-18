@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-from django.shortcuts import render, redirect, render_to_response
+from django.shortcuts import render, redirect
 from django.contrib import auth
 from MCS.models import CustomUser, Member, Employee
 from .forms import CustomUserCreationForm
@@ -7,26 +7,30 @@ from .forms import CustomUserCreationForm
 """
 參考文件:
 http://dokelung-blog.logdown.com/posts/234437-django-notes-10-users-login-and-logout
+http://dokelung-blog.logdown.com/posts/235711-django-notes-12-template-advanced-technique
 """
 
 def login(request):
+    '''
     # 如果已經有用戶登入了, 跳轉至首頁
     if request.user.is_authenticated:
         return redirect('/index/')
-
-    email = request.POST.get('email')
-    password = request.POST.get('password')
+    '''
+    email = request.POST.get('login-email')
+    password = request.POST.get('login-password')
     
     if email and password:
         try:
             user = auth.authenticate(email=email, password = password)
         except:
-            return render(request, 'login.html')
+            # 回傳訊息
+            return "帳號密碼有誤"
+            #return render(request, 'login.html')
         # 登入成功
         if user is not None and user.is_active:
             auth.login(request, user)
-            return redirect('/index/')
-    return render(request, 'login.html')
+            return "登入成功"
+    else: "有欄位沒有填"
 '''
 def register(request):
     if request.method == 'POST':
@@ -46,10 +50,10 @@ def Create_Member_View(request):
             member = Member.create(user=user)
             member.save()
             auth.login(request, user)
-            return redirect('/index/')
+            return redirect('/')
     else:
         form = CustomUserCreationForm()
-    return render(request, 'create-member.html',{'form': form})
+    return render(request, 'index.html',{'form': form})
 
 def Create_Employee_View(request):
     title =  request.POST.get('title')
@@ -60,12 +64,18 @@ def Create_Employee_View(request):
             employee = Employee.create(user=user, title=title)
             employee.save()
             auth.login(request, user)
-            return redirect('/index/')
-            #return redirect('/accounts/login/')
+            return render(request,'index.html')
     else:
         form = CustomUserCreationForm()
     return render(request, 'create-employee.html',{'form': form})
 
 def logout(request):
     auth.logout(request)
-    return redirect('/index/')
+    return redirect('/')
+
+def MCS_View(request):
+    message = ''
+    if 'login' in request.POST:
+        message = login(request)
+    elif 'register-member' in request.POST:
+        Create_Member_View(request)

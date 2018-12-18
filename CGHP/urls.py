@@ -20,9 +20,9 @@ from django.conf import settings
 from PSMS.views import home, menu, about
 
 urlpatterns = [
-    path('', home, name='home'),
+    #path('', home, name='home'),
+    path('', include('MCS.urls')),
     path('admin/', admin.site.urls),
-    path('accounts/', include('MCS.urls')),
     path('menu/', menu, name='menu'),
     path('about/', about, name='about'),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -180,9 +180,14 @@
                     </div>
                 </div>
         </footer>
-        <!-- Login Form -->
+
+        <!-- 登入登出的那個視窗 -->
         <div class="accountbox-wrapper">
             <div class="accountbox text-left">
+                {% if request.user.is_authenticated %}
+                    <p>{{ request.user }}</p>
+                    <a href="/accounts/logout/"><button type="text" class="food__btn" ><span>登出</span></button></a>
+                {% else %}
                 <ul class="nav accountbox__filters" id="myTab" role="tablist">
                     <li>
                         <a class="active" id="log-tab" data-toggle="tab" href="#log" role="tab" aria-controls="log" aria-selected="true">Login</a>
@@ -191,18 +196,19 @@
                         <a id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Register</a>
                     </li>
                 </ul>
-                <div class="accountbox__inner tab-content" id="myTabContent">
+                <div class="accountbox__inner tab-content" id="myTabContent">                    
+                    <!-- 登入窗口 -->
                     <div class="accountbox__login tab-pane fade show active" id="log" role="tabpanel" aria-labelledby="log-tab">
                         <form action="" method="post">
                             {% csrf_token %}
                             <div class="single-input">
-                                <input class="cr-round--lg" type="text" placeholder="User email" value="" id="email">
+                                <input class="cr-round--lg" type="text" placeholder="User email" value="" name="login-email">
                             </div>
                             <div class="single-input">
-                                <input class="cr-round--lg" type="password" placeholder="Password" value="" id="password">
+                                <input class="cr-round--lg" type="password" placeholder="Password" value="" name="login-password">
                             </div>
                             <div class="single-input">
-                                <button type="submit" class="food__btn"><span>Go</span></button>
+                                <button type="submit" class="food__btn" name='login'><span>Go</span></button>
                             </div>
                             <div class="accountbox-login__others">
                                 <h6>Or login with</h6>
@@ -216,32 +222,17 @@
                             </div>
                         </form>
                     </div>
+                    <!-- 註冊窗口 -->
                     <div class="accountbox__register tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <form action="#">
-                            <div class="single-input">
-                                <input class="cr-round--lg" type="text" placeholder="User name">
-                            </div>
-                            <div class="single-input">
-                                <input class="cr-round--lg" type="email" placeholder="Email address">
-                            </div>
-                            <div class="single-input">
-                                <input class="cr-round--lg" type="password" placeholder="Password">
-                            </div>
-                            <div class="single-input">
-                                <input class="cr-round--lg" type="password" placeholder="Confirm password">
-                            </div>
-                            <div class="single-input">
-                                <button type="submit" class="food__btn"><span>Sign Up</span></button>
-                            </div>
-                        </form>
-                        <!-- 註冊這邊怪怪的 -->
-                        <h1>註冊新帳號</h1>
-                        <form action="" method="post">
+                        <form action="#" method="post">
                             {% csrf_token %}
                             {{ form.as_p }}
-                            <input type="submit" value="註冊">
+                            <div class="single-input">
+                                <button type="submit" class="food__btn" name="register-member"><span>Sign Up</span></button>
+                            </div>
                         </form>
                     </div>
+                    {% endif %}
                     <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
                 </div>
             </div>
