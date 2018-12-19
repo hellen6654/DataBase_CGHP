@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from .models import Pizza
+from MCS.views import MCS_View
 # Create your views here.
 
 def home(request):
-    # 實作 登入註冊登出等功能
-    return render(request,'index.html')
+    return MCS_View(request, 'index.html')
 def menu(request):
     pizzas = Pizza.objects.all()
     return render(request,'menu-list.html',{'pizzas':pizzas})

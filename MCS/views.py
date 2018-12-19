@@ -87,7 +87,7 @@ def logout(request):
     return redirect('/')
 
 # main home
-def MCS_View(request):
+def MCS_View(request, web):
     login_message = ''
     if 'login' in request.POST:
         login_message = login(request)
@@ -95,4 +95,4 @@ def MCS_View(request):
     register_message = register(request)
     if register_message == '註冊成功':
         return redirect('/')
-    return render(request, 'index.html',{'form': register_message})
+    return render(request, web,{'form': register_message})
