@@ -42,6 +42,19 @@ def register(request):
         form = CustomUserCreationForm()
     return render(request, 'register.html',{'form': form})
 '''
+def register(request):
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            member = Member.create(user=user)
+            member.save()
+            auth.login(request, user)
+            return '註冊成功'
+    else:
+        form = CustomUserCreationForm()
+    return form
+
 def Create_Member_View(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -75,7 +88,11 @@ def logout(request):
 
 # main home
 def MCS_View(request):
-    message = ''
+    login_message = ''
     if 'login' in request.POST:
-        message = login(request)
-    return Create_Member_View(request)
+        login_message = login(request)
+
+    register_message = register(request)
+    if register_message == '註冊成功':
+        return redirect('/')
+    return render(request, 'index.html',{'form': register_message})
