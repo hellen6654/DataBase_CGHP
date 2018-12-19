@@ -1,450 +1,446 @@
 {% extends 'base.html' %}
-
-{% load static %}
-
+{% block title %} - Menu{% endblock %}
 {% block content %}
-        <!-- Start Bradcaump area -->
-        <div class="ht__bradcaump__area bg-image--18">
-            <div class="ht__bradcaump__wrap d-flex align-items-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="bradcaump__inner text-center">
-                                <h2 class="bradcaump-title">Pizza MENU</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area bg-image--18">
+  <div class="ht__bradcaump__wrap d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="bradcaump__inner text-center">
+            <h2 class="bradcaump-title">Pizza MENU</h2>
+          </div>
         </div>
-        <!-- Start Menu Grid Area -->
-        <section class="food__menu__grid__area section-padding--lg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="food__nav nav nav-tabs" role="tablist">
-                            <a class="active" id="nav-all-tab" data-toggle="tab" href="#nav-all" role="tab">All</a>
-                            <a id="nav-Beef-tab" data-toggle="tab" href="#nav-Beef" role="tab">Beef</a>
-                            <a id="nav-Chicken-tab" data-toggle="tab" href="#nav-Chicken" role="tab">Chicken</a>
-                            <a id="nav-Mix-tab" data-toggle="tab" href="#nav-Mix" role="tab">Mix</a>
-                            <a id="nav-Pork-tab" data-toggle="tab" href="#nav-Pork" role="tab">Pork</a>
-                            <a id="nav-Seafood-tab" data-toggle="tab" href="#nav-Seafood" role="tab">Seafood</a>
-                            <a id="nav-Vegetable-tab" data-toggle="tab" href="#nav-Vegetable" role="tab">Vegetable</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt--30">
-                    <div class="col-lg-12">
-                        <div class="fd__tab__content tab-content" id="nav-tabContent">
-                            <!-- Start Single Content ALL kind of Pizza -->
-                            <div class="food__list__tab__content tab-pane fade show active" id="nav-all" role="tabpanel">
-                                {%for pizza in pizzas%}
-                                <div class="single__food__list d-flex wow fadeInUp">
-                                    <div class="food__list__thumb">
-                                        <a href="menu-details.html">
-                                            <img src="{{pizza.pic.url}}" alt="list food images">
-                                        </a>
-                                    </div>
-                                    <div class="food__list__inner d-flex align-items-center justify-content-between">
-                                        <div class="food__list__details">
-                                            <h2><a href="menu-details.html">{{pizza.name}}</a></h2>
-                                            <h6>餡料：{{pizza.element}}</a></h6>
-                                            <p></p>
-                                            <h6>產品介紹：{{pizza.description}}</h6>
-                                            <p></p>
-                                            <h6>目前庫存量：{{pizza.in_stock}}</h6>
-                                            <div class="list__btn">
-                                                
-                                                <a class="food__btn grey--btn theme--hover" href="menu-details.html">下訂去</a>
-                                            </div>
-                                        </div>
-                                        <div class="food__rating">
-                                            <div class="list__food__prize">
-                                                <span>NT.{{pizza.price}}</span>
-                                            </div>
-                                            <ul class="rating">
-                                                {%   if pizza.stars == 1 %}
-                                                <li><i class="zmdi zmdi-star"></i></li>
-                                                {% elif pizza.stars == 2 %}
-                                                <li><i class="zmdi zmdi-star"></i></li>
-                                                <li><i class="zmdi zmdi-star"></i></li>
-                                                {% elif pizza.stars == 3 %}
-                                                <li><i class="zmdi zmdi-star"></i></li>
-                                                <li><i class="zmdi zmdi-star"></i></li>
-                                                <li><i class="zmdi zmdi-star"></i></li>
-                                                {% elif pizza.stars == 4 %}
-                                                <li><i class="zmdi zmdi-star"></i></li>
-                                                <li><i class="zmdi zmdi-star"></i></li>
-                                                <li><i class="zmdi zmdi-star"></i></li>
-                                                <li><i class="zmdi zmdi-star"></i></li>
-                                                {% elif pizza.stars == 5 %}
-                                                <li><i class="zmdi zmdi-star"></i></li>
-                                                <li><i class="zmdi zmdi-star"></i></li>
-                                                <li><i class="zmdi zmdi-star"></i></li>
-                                                <li><i class="zmdi zmdi-star"></i></li>
-                                                <li><i class="zmdi zmdi-star"></i></li>
-                                                {% endif %}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                {%empty%}
-                                    <p>本餐廳啥都沒賣！</p>
-                                {%endfor%}
-                                
-                            </div>
-                            <!-- Start Single Content Beef kind of Pizza -->
-                            <div class="food__list__tab__content tab-pane fade" id="nav-Beef" role="tabpanel">
-                                    {%for pizza in pizzas%}
-                                    {% if pizza.kind_chose == 'Beef' %}
-                                    <div class="single__food__list d-flex wow fadeInUp">
-                                        <div class="food__list__thumb">
-                                            <a href="menu-details.html">
-                                                <img src="{{pizza.pic.url}}" alt="list food images">
-                                            </a>
-                                        </div>
-                                        <div class="food__list__inner d-flex align-items-center justify-content-between">
-                                            <div class="food__list__details">
-                                                <h2><a href="menu-details.html">{{pizza.name}}</a></h2>
-                                                <h6>{{pizza.element}}</a></h6>
-                                                <p></p>
-                                                <h6>{{pizza.description}}</h6>
-                                                <p></p>
-                                                <h6>目前庫存量：{{pizza.in_stock}}</h6>
-                                                <div class="list__btn">
-                                                    <a class="food__btn grey--btn theme--hover" href="menu-details.html">下訂去</a>
-                                                </div>
-                                            </div>
-                                            <div class="food__rating">
-                                                <div class="list__food__prize">
-                                                    <span>NT.{{pizza.price}}</span>
-                                                </div>
-                                                <ul class="rating">
-                                                    {% if pizza.stars == 1 %}
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    {% elif pizza.stars == 2 %}
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    {% elif pizza.stars == 3 %}
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    {% elif pizza.stars == 4 %}
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    {% elif pizza.stars == 5 %}
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    {% endif %}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {% endif %}
-                                    {%empty%}
-                                        <p>本餐廳啥都沒賣！</p>
-                                    {%endfor%}
-                                    
-                            </div>
-                            <!-- Start Single Content Chicken kind of Pizza -->
-                            <div class="food__list__tab__content tab-pane fade" id="nav-Chicken" role="tabpanel">
-                                {%for pizza in pizzas%}
-                                    {% if pizza.kind_chose == 'Chicken' %}
-                                        <div class="single__food__list d-flex wow fadeInUp">
-                                            <div class="food__list__thumb">
-                                                <a href="menu-details.html">
-                                                    <img src="{{pizza.pic.url}}" alt="list food images">
-                                                </a>
-                                            </div>
-                                            <div class="food__list__inner d-flex align-items-center justify-content-between">
-                                                <div class="food__list__details">
-                                                    <h2><a href="menu-details.html">{{pizza.name}}</a></h2>
-                                                    <h6>{{pizza.element}}</a></h6>
-                                                    <p></p>
-                                                    <h6>{{pizza.description}}</h6>
-                                                    <p></p>
-                                                    <h6>目前庫存量：{{pizza.in_stock}}</h6>
-                                                    <div class="list__btn">
-                                                        <a class="food__btn grey--btn theme--hover" href="menu-details.html">下訂去</a>
-                                                    </div>
-                                                </div>
-                                                <div class="food__rating">
-                                                    <div class="list__food__prize">
-                                                        <span>NT.{{pizza.price}}</span>
-                                                    </div>
-                                                    <ul class="rating">
-                                                        {% if pizza.stars == 1 %}
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        {% elif pizza.stars == 2 %}
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        {% elif pizza.stars == 3 %}
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        {% elif pizza.stars == 4 %}
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        {% elif pizza.stars == 5 %}
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        {% endif %}
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-                                {%empty%}
-                                    <p>本餐廳啥都沒賣！</p>
-                                {%endfor%}
-                            </div>
-                            <!-- Start Single Content Mix kind of Pizza -->
-                            <div class="food__list__tab__content tab-pane fade" id="nav-Mix" role="tabpanel">
-                                    {%for pizza in pizzas%}
-                                    {% if pizza.kind_chose == 'Mix' %}
-                                    <div class="single__food__list d-flex wow fadeInUp">
-                                        <div class="food__list__thumb">
-                                            <a href="menu-details.html">
-                                                <img src="{{pizza.pic.url}}" alt="list food images">
-                                            </a>
-                                        </div>
-                                        <div class="food__list__inner d-flex align-items-center justify-content-between">
-                                            <div class="food__list__details">
-                                                <h2><a href="menu-details.html">{{pizza.name}}</a></h2>
-                                                <h6>{{pizza.element}}</a></h6>
-                                            <p></p>
-                                            <h6>{{pizza.description}}</h6>
-                                            <p></p>
-                                            <h6>目前庫存量：{{pizza.in_stock}}</h6>
-                                                <div class="list__btn">
-                                                    <a class="food__btn grey--btn theme--hover" href="menu-details.html">下訂去</a>
-                                                </div>
-                                            </div>
-                                            <div class="food__rating">
-                                                <div class="list__food__prize">
-                                                    <span>NT.{{pizza.price}}</span>
-                                                </div>
-                                                <ul class="rating">
-                                                    {% if pizza.stars == 1 %}
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    {% elif pizza.stars == 2 %}
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    {% elif pizza.stars == 3 %}
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    {% elif pizza.stars == 4 %}
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    {% elif pizza.stars == 5 %}
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    {% endif %}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {% endif %}
-                                    {%empty%}
-                                        <p>本餐廳啥都沒賣！</p>
-                                    {%endfor%}
-                                    
-                            </div>
-                            <!-- Start Single Content Pork kind of Pizza -->
-                            <div class="food__list__tab__content tab-pane fade" id="nav-Pork" role="tabpanel">
-                                    {%for pizza in pizzas%}
-                                    {% if pizza.kind_chose == 'Pork' %}
-                                    <div class="single__food__list d-flex wow fadeInUp">
-                                        <div class="food__list__thumb">
-                                            <a href="menu-details.html">
-                                                <img src="{{pizza.pic.url}}" alt="list food images">
-                                            </a>
-                                        </div>
-                                        <div class="food__list__inner d-flex align-items-center justify-content-between">
-                                            <div class="food__list__details">
-                                                <h2><a href="menu-details.html">{{pizza.name}}</a></h2>
-                                                <h6>{{pizza.element}}</a></h6>
-                                                <p></p>
-                                                <h6>{{pizza.description}}</h6>
-                                                <p></p>
-                                                <h6>目前庫存量：{{pizza.in_stock}}</h6>
-                                                <div class="list__btn">
-                                                    <a class="food__btn grey--btn theme--hover" href="menu-details.html">下訂去</a>
-                                                </div>
-                                            </div>
-                                            <div class="food__rating">
-                                                <div class="list__food__prize">
-                                                    <span>NT.{{pizza.price}}</span>
-                                                </div>
-                                                <ul class="rating">
-                                                    {% if pizza.stars == 1 %}
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    {% elif pizza.stars == 2 %}
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    {% elif pizza.stars == 3 %}
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    {% elif pizza.stars == 4 %}
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    {% elif pizza.stars == 5 %}
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    {% endif %}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {% endif %}
-                                    {%empty%}
-                                        <p>本餐廳啥都沒賣！</p>
-                                    {%endfor%}
-                                    
-                            </div>
-                            <!-- Start Single Content Seafood kind of Pizza -->
-                            <div class="food__list__tab__content tab-pane fade" id="nav-Seafood" role="tabpanel">
-                                    {%for pizza in pizzas%}
-                                    {% if pizza.kind_chose == 'Seafood' %}
-                                    <div class="single__food__list d-flex wow fadeInUp">
-                                        <div class="food__list__thumb">
-                                            <a href="menu-details.html">
-                                                <img src="{{pizza.pic.url}}" alt="list food images">
-                                            </a>
-                                        </div>
-                                        <div class="food__list__inner d-flex align-items-center justify-content-between">
-                                            <div class="food__list__details">
-                                                <h2><a href="menu-details.html">{{pizza.name}}</a></h2>
-                                                <h6>{{pizza.element}}</a></h6>
-                                                <p></p>
-                                                <h6>{{pizza.description}}</h6>
-                                                <p></p>
-                                                <h6>目前庫存量：{{pizza.in_stock}}</h6>
-                                                <div class="list__btn">
-                                                    <a class="food__btn grey--btn theme--hover" href="menu-details.html">下訂去</a>
-                                                </div>
-                                            </div>
-                                            <div class="food__rating">
-                                                <div class="list__food__prize">
-                                                    <span>NT.{{pizza.price}}</span>
-                                                </div>
-                                                <ul class="rating">
-                                                    {% if pizza.stars == 1 %}
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    {% elif pizza.stars == 2 %}
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    {% elif pizza.stars == 3 %}
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    {% elif pizza.stars == 4 %}
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    {% elif pizza.stars == 5 %}
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    <li><i class="zmdi zmdi-star"></i></li>
-                                                    {% endif %}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {% endif %}
-                                    {%empty%}
-                                        <p>本餐廳啥都沒賣！</p>
-                                    {%endfor%}
-                                    
-                            </div>                                
-                            <!-- Start Single Content Vegetable of Pizza-->
-                            <div class="food__list__tab__content tab-pane fade" id="nav-Vegetable" role="tabpanel">
-                                    {% for pizza in pizzas %}
-                                        {% if pizza.kind_chose == 'Vegetable' %}
-                                        <div class="single__food__list d-flex wow fadeInUp">
-                                            <div class="food__list__thumb">
-                                                <a href="menu-details.html">
-                                                    <img src="{{pizza.pic.url}}" alt="list food images">
-                                                </a>
-                                            </div>
-                                            <div class="food__list__inner d-flex align-items-center justify-content-between">
-                                                <div class="food__list__details">
-                                                    <h2><a href="menu-details.html">{{pizza.name}}</a></h2>
-                                                    <h6>{{pizza.element}}</a></h6>
-                                                    <p></p>
-                                                    <h6>{{pizza.description}}</h6>
-                                                    <p></p>
-                                                    <h6>目前庫存量：{{pizza.in_stock}}</h6>
-                                                    <div class="list__btn">
-                                                        <a class="food__btn grey--btn theme--hover" href="menu-details.html">下訂去</a>
-                                                    </div>
-                                                </div>
-                                                <div class="food__rating">
-                                                    <div class="list__food__prize">
-                                                        <span>NT.{{pizza.price}} </span>
-                                                    </div>
-                                                    <ul class="rating">
-                                                        {% if pizza.stars == 1 %}
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        {% elif pizza.stars == 2 %}
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        {% elif pizza.stars == 3 %}
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        {% elif pizza.stars == 4 %}
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        {% elif pizza.stars == 5 %}
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        <li><i class="zmdi zmdi-star"></i></li>
-                                                        {% endif %}
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {% endif %}
-                                    {%empty%}
-                                        <p>本餐廳啥都沒賣！</p>
-                                    {%endfor%}
-                                    
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-{% endblock %}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Start Menu Grid Area -->
+<section class="food__menu__grid__area section-padding--lg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="food__nav nav nav-tabs" role="tablist">
+          <a class="active" id="nav-all-tab" data-toggle="tab" href="#nav-all" role="tab">All</a>
+          <a id="nav-Beef-tab" data-toggle="tab" href="#nav-Beef" role="tab">Beef</a>
+          <a id="nav-Chicken-tab" data-toggle="tab" href="#nav-Chicken" role="tab">Chicken</a>
+          <a id="nav-Mix-tab" data-toggle="tab" href="#nav-Mix" role="tab">Mix</a>
+          <a id="nav-Pork-tab" data-toggle="tab" href="#nav-Pork" role="tab">Pork</a>
+          <a id="nav-Seafood-tab" data-toggle="tab" href="#nav-Seafood" role="tab">Seafood</a>
+          <a id="nav-Vegetable-tab" data-toggle="tab" href="#nav-Vegetable" role="tab">Vegetable</a>
+        </div>
+      </div>
+    </div>
+    <div class="row mt--30">
+      <div class="col-lg-12">
+        <div class="fd__tab__content tab-content" id="nav-tabContent">
+          <!-- Start Single Content ALL kind of Pizza -->
+          <div class="food__list__tab__content tab-pane fade show active" id="nav-all" role="tabpanel">
+            {%for pizza in pizzas%}
+            <div class="single__food__list d-flex wow fadeInUp">
+              <div class="food__list__thumb">
+                <a href="{% url 'detail' no=pizza.pizza_no %}">
+                  <img src="{{pizza.pic.url}}" alt="list food images">
+                </a>
+              </div>
+              <div class="food__list__inner d-flex align-items-center justify-content-between">
+                <div class="food__list__details">
+                  <h2><a href="{% url 'detail' no=pizza.pizza_no %}">{{pizza.name}}</a></h2>
+                  <h6>餡料：{{pizza.element}}</a></h6>
+                  <p></p>
+                  <h6>產品介紹：{{pizza.description}}</h6>
+                  <p></p>
+                  <h6>目前庫存量：{{pizza.in_stock}}</h6>
+                  <div class="list__btn">
 
-	
+                    <a class="food__btn grey--btn theme--hover" href="{% url 'detail' no=pizza.pizza_no %}">下訂去</a>
+                  </div>
+                </div>
+                <div class="food__rating">
+                  <div class="list__food__prize">
+                    <span>NT.{{pizza.price}}</span>
+                  </div>
+                  <ul class="rating">
+                    {% if pizza.stars == 1 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 2 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 3 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 4 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 5 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% endif %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {%empty%}
+            <p>本餐廳啥都沒賣！</p>
+            {%endfor%}
+
+          </div>
+          <!-- Start Single Content Beef kind of Pizza -->
+          <div class="food__list__tab__content tab-pane fade" id="nav-Beef" role="tabpanel">
+            {%for pizza in pizzas%}
+            {% if pizza.kind == 'Beef' %}
+            <div class="single__food__list d-flex wow fadeInUp">
+              <div class="food__list__thumb">
+                <a href="{% url 'detail' no=pizza.pizza_no %}">
+                  <img src="{{pizza.pic.url}}" alt="list food images">
+                </a>
+              </div>
+              <div class="food__list__inner d-flex align-items-center justify-content-between">
+                <div class="food__list__details">
+                  <h2><a href="{% url 'detail' no=pizza.pizza_no %}">{{pizza.name}}</a></h2>
+                  <h6>{{pizza.element}}</a></h6>
+                  <p></p>
+                  <h6>{{pizza.description}}</h6>
+                  <p></p>
+                  <h6>目前庫存量：{{pizza.in_stock}}</h6>
+                  <div class="list__btn">
+                    <a class="food__btn grey--btn theme--hover" href="{% url 'detail' no=pizza.pizza_no %}">下訂去</a>
+                  </div>
+                </div>
+                <div class="food__rating">
+                  <div class="list__food__prize">
+                    <span>NT.{{pizza.price}}</span>
+                  </div>
+                  <ul class="rating">
+                    {% if pizza.stars == 1 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 2 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 3 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 4 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 5 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% endif %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            {%empty%}
+            <p>本餐廳啥都沒賣！</p>
+            {%endfor%}
+
+          </div>
+          <!-- Start Single Content Chicken kind of Pizza -->
+          <div class="food__list__tab__content tab-pane fade" id="nav-Chicken" role="tabpanel">
+            {%for pizza in pizzas%}
+              {% if pizza.kind in 'Chicken' %}
+              <div class="single__food__list d-flex wow fadeInUp">
+                <div class="food__list__thumb">
+                  <a href="{% url 'detail' no=pizza.pizza_no %}">
+                    <img src="{{pizza.pic.url}}" alt="list food images">
+                  </a>
+                </div>
+                <div class="food__list__inner d-flex align-items-center justify-content-between">
+                  <div class="food__list__details">
+                    <h2><a href="{% url 'detail' no=pizza.pizza_no %}">{{pizza.name}}</a></h2>
+                    <h6>{{pizza.element}}</a></h6>
+                    <p></p>
+                    <h6>{{pizza.description}}</h6>
+                    <p></p>
+                    <h6>目前庫存量：{{pizza.in_stock}}</h6>
+                    <div class="list__btn">
+                      <a class="food__btn grey--btn theme--hover" href="{% url 'detail' no=pizza.pizza_no %}">下訂去</a>
+                    </div>
+                  </div>
+                  <div class="food__rating">
+                    <div class="list__food__prize">
+                      <span>NT.{{pizza.price}}</span>
+                    </div>
+                    <ul class="rating">
+                      {% if pizza.stars == 1 %}
+                      <li><i class="zmdi zmdi-star"></i></li>
+                      {% elif pizza.stars == 2 %}
+                      <li><i class="zmdi zmdi-star"></i></li>
+                      <li><i class="zmdi zmdi-star"></i></li>
+                      {% elif pizza.stars == 3 %}
+                      <li><i class="zmdi zmdi-star"></i></li>
+                      <li><i class="zmdi zmdi-star"></i></li>
+                      <li><i class="zmdi zmdi-star"></i></li>
+                      {% elif pizza.stars == 4 %}
+                      <li><i class="zmdi zmdi-star"></i></li>
+                      <li><i class="zmdi zmdi-star"></i></li>
+                      <li><i class="zmdi zmdi-star"></i></li>
+                      <li><i class="zmdi zmdi-star"></i></li>
+                      {% elif pizza.stars == 5 %}
+                      <li><i class="zmdi zmdi-star"></i></li>
+                      <li><i class="zmdi zmdi-star"></i></li>
+                      <li><i class="zmdi zmdi-star"></i></li>
+                      <li><i class="zmdi zmdi-star"></i></li>
+                      <li><i class="zmdi zmdi-star"></i></li>
+                      {% endif %}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+            {%empty%}
+              <p>本餐廳啥都沒賣！</p>
+            {%endfor%}
+          </div>
+          <!-- Start Single Content Mix kind of Pizza -->
+          <div class="food__list__tab__content tab-pane fade" id="nav-Mix" role="tabpanel">
+            {%for pizza in pizzas%}
+            {% if pizza.kind == 'Mix' %}
+            <div class="single__food__list d-flex wow fadeInUp">
+              <div class="food__list__thumb">
+                <a href="{% url 'detail' no=pizza.pizza_no %}">
+                  <img src="{{pizza.pic.url}}" alt="list food images">
+                </a>
+              </div>
+              <div class="food__list__inner d-flex align-items-center justify-content-between">
+                <div class="food__list__details">
+                  <h2><a href="{% url 'detail' no=pizza.pizza_no %}">{{pizza.name}}</a></h2>
+                  <h6>{{pizza.element}}</a></h6>
+                  <p></p>
+                  <h6>{{pizza.description}}</h6>
+                  <p></p>
+                  <h6>目前庫存量：{{pizza.in_stock}}</h6>
+                  <div class="list__btn">
+                    <a class="food__btn grey--btn theme--hover" href="{% url 'detail' no=pizza.pizza_no %}">下訂去</a>
+                  </div>
+                </div>
+                <div class="food__rating">
+                  <div class="list__food__prize">
+                    <span>NT.{{pizza.price}}</span>
+                  </div>
+                  <ul class="rating">
+                    {% if pizza.stars == 1 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 2 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 3 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 4 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 5 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% endif %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            {%empty%}
+            <p>本餐廳啥都沒賣！</p>
+            {%endfor%}
+
+          </div>
+          <!-- Start Single Content Pork kind of Pizza -->
+          <div class="food__list__tab__content tab-pane fade" id="nav-Pork" role="tabpanel">
+            {%for pizza in pizzas%}
+            {% if pizza.kind == 'Pork' %}
+            <div class="single__food__list d-flex wow fadeInUp">
+              <div class="food__list__thumb">
+                <a href="{% url 'detail' no=pizza.pizza_no %}">
+                  <img src="{{pizza.pic.url}}" alt="list food images">
+                </a>
+              </div>
+              <div class="food__list__inner d-flex align-items-center justify-content-between">
+                <div class="food__list__details">
+                  <h2><a href="{% url 'detail' no=pizza.pizza_no %}">{{pizza.name}}</a></h2>
+                  <h6>{{pizza.element}}</a></h6>
+                  <p></p>
+                  <h6>{{pizza.description}}</h6>
+                  <p></p>
+                  <h6>目前庫存量：{{pizza.in_stock}}</h6>
+                  <div class="list__btn">
+                    <a class="food__btn grey--btn theme--hover" href="{% url 'detail' no=pizza.pizza_no %}">下訂去</a>
+                  </div>
+                </div>
+                <div class="food__rating">
+                  <div class="list__food__prize">
+                    <span>NT.{{pizza.price}}</span>
+                  </div>
+                  <ul class="rating">
+                    {% if pizza.stars == 1 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 2 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 3 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 4 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 5 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% endif %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            {%empty%}
+            <p>本餐廳啥都沒賣！</p>
+            {%endfor%}
+
+          </div>
+          <!-- Start Single Content Seafood kind of Pizza -->
+          <div class="food__list__tab__content tab-pane fade" id="nav-Seafood" role="tabpanel">
+            {%for pizza in pizzas%}
+            {% if pizza.kind == 'Seafood' %}
+            <div class="single__food__list d-flex wow fadeInUp">
+              <div class="food__list__thumb">
+                <a href="{% url 'detail' no=pizza.pizza_no %}">
+                  <img src="{{pizza.pic.url}}" alt="list food images">
+                </a>
+              </div>
+              <div class="food__list__inner d-flex align-items-center justify-content-between">
+                <div class="food__list__details">
+                  <h2><a href="{% url 'detail' no=pizza.pizza_no %}">{{pizza.name}}</a></h2>
+                  <h6>{{pizza.element}}</a></h6>
+                  <p></p>
+                  <h6>{{pizza.description}}</h6>
+                  <p></p>
+                  <h6>目前庫存量：{{pizza.in_stock}}</h6>
+                  <div class="list__btn">
+                    <a class="food__btn grey--btn theme--hover" href="{% url 'detail' no=pizza.pizza_no %}">下訂去</a>
+                  </div>
+                </div>
+                <div class="food__rating">
+                  <div class="list__food__prize">
+                    <span>NT.{{pizza.price}}</span>
+                  </div>
+                  <ul class="rating">
+                    {% if pizza.stars == 1 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 2 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 3 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 4 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 5 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% endif %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            {%empty%}
+            <p>本餐廳啥都沒賣！</p>
+            {%endfor%}
+
+          </div>
+          <!-- Start Single Content Vegetable of Pizza-->
+          <div class="food__list__tab__content tab-pane fade" id="nav-Vegetable" role="tabpanel">
+            {% for pizza in pizzas %}
+            {% if pizza.kind == 'Vegetable' %}
+            <div class="single__food__list d-flex wow fadeInUp">
+              <div class="food__list__thumb">
+                <a href="{% url 'detail' no=pizza.pizza_no %}">
+                  <img src="{{pizza.pic.url}}" alt="list food images">
+                </a>
+              </div>
+              <div class="food__list__inner d-flex align-items-center justify-content-between">
+                <div class="food__list__details">
+                  <h2><a href="{% url 'detail' no=pizza.pizza_no %}">{{pizza.name}}</a></h2>
+                  <h6>{{pizza.element}}</a></h6>
+                  <p></p>
+                  <h6>{{pizza.description}}</h6>
+                  <p></p>
+                  <h6>目前庫存量：{{pizza.in_stock}}</h6>
+                  <div class="list__btn">
+                    <a class="food__btn grey--btn theme--hover" href="{% url 'detail' no=pizza.pizza_no %}">下訂去</a>
+                  </div>
+                </div>
+                <div class="food__rating">
+                  <div class="list__food__prize">
+                    <span>NT.{{pizza.price}} </span>
+                  </div>
+                  <ul class="rating">
+                    {% if pizza.stars == 1 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 2 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 3 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 4 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% elif pizza.stars == 5 %}
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    <li><i class="zmdi zmdi-star"></i></li>
+                    {% endif %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            {%empty%}
+            <p>本餐廳啥都沒賣！</p>
+            {%endfor%}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

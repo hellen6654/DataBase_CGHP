@@ -1,10 +1,11 @@
 # -*- coding: UTF-8 -*-
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
-
+from django.urls import reverse
 class Pizza(models.Model):
     pizza_no = models.AutoField(
         verbose_name='披薩編號', primary_key=True, null=False)
+    slug = models.SlugField(max_length=128,default='0')
     name = models.CharField(
         verbose_name='披薩名稱', max_length=20, null=False)
     element = models.TextField(
@@ -31,11 +32,14 @@ class Pizza(models.Model):
         ('Seafood', '海鮮'),
         ('Vegetable', '蔬菜') 
     )
-    kind_chose = models.CharField(
+    kind = models.CharField(
         verbose_name='種類', choices=kind_chose, max_length=10, null=True)
     stars = models.DecimalField(
         verbose_name='披薩評分', max_digits=1, decimal_places=0, null=False,   
         validators=[MinValueValidator(1, '最低1分'), MaxValueValidator(5, '最多5分')])
     pic = models.ImageField(upload_to='pizza-imgae/', null=True)
+    available = models.BooleanField(verbose_name='上架',default=False)
     def __str__(self):
         return self.name
+    def get_absolute_url(self):
+        return reverse('detail', kwargs=[self.id])

@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Menu-List ||  Aahar Food Delivery Html5 Template</title>
+	<title>CGHP{% block title %}{% endblock %}</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,9 +17,6 @@
 	<link rel="stylesheet" href="{% static 'pizza/css/bootstrap.min.css' %}">
 	<link rel="stylesheet" href="{% static 'pizza/css/plugins.css' %}">
 	<link rel="stylesheet" href="{% static 'pizza/style.css' %}">
-
-	<!-- Cusom css -->
-   <link rel="stylesheet" href="css/custom.css">
 
 	<!-- Modernizer js -->
 	<script src="{% static 'pizza/js/vendor/modernizr-3.5.0.min.js' %}"></script>
@@ -45,15 +42,9 @@
                                 <div class="main__menu__wrap">
                                     <nav class="main__menu__nav d-none d-lg-block">
                                         <ul class="mainmenu">
-                                            <li class="drop"><a href="{% url 'home' %}">Home</a></li>
+                                            <li><a href="{% url 'home' %}">Home</a></li>
                                             <li><a href="{% url 'about' %}">About</a></li>
-                                            <li class="drop"><a href="{% url 'menu' %}">Menu</a>
-                                                <ul class="dropdown__menu">
-                                                    <li><a href="{% url 'menu' %}">Menu</a></li>
-                                                    <li><a href="menu-details.html">Menu Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="{% url 'menu' %}">Menu</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -136,10 +127,10 @@
                                     <h2 class="ftr__title">產品</h2>
                                     <div class="footer__inner">
                                         <ul class="sm__gallery__list">
-                                            <li><a href="#"><img src="{% static 'pizza/images/gallery/sm-img/1.jpg' %}" alt="gallery images"></a></li>
-                                            <li><a href="#"><img src="{% static 'pizza/images/gallery/sm-img/2.jpg' %}" alt="gallery images"></a></li>
-                                            <li><a href="#"><img src="{% static 'pizza/images/gallery/sm-img/3.jpg' %}" alt="gallery images"></a></li>
-                                            <li><a href="#"><img src="{% static 'pizza/images/gallery/sm-img/4.jpg' %}" alt="gallery images"></a></li>
+                                            <li><img src="{% static 'pizza/images/pizza-sm-img/sm1.jpg' %}" alt="gallery images"></li>
+                                            <li><img src="{% static 'pizza/images/pizza-sm-img/sm2.jpg' %}" alt="gallery images"></li>
+                                            <li><img src="{% static 'pizza/images/pizza-sm-img/sm3.jpg' %}" alt="gallery images"></li>
+                                            <li><img src="{% static 'pizza/images/pizza-sm-img/sm4.jpg' %}" alt="gallery images"></li>
                                         </ul>
                                     </div>
                                 </div>
