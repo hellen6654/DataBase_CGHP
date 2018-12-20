@@ -11,11 +11,6 @@ http://dokelung-blog.logdown.com/posts/235711-django-notes-12-template-advanced-
 """
 
 def login(request):
-    '''
-    # 如果已經有用戶登入了, 跳轉至首頁
-    if request.user.is_authenticated:
-        return redirect('/index/')
-    '''
     email = request.POST.get('login-email')
     password = request.POST.get('login-password')
     
@@ -30,7 +25,7 @@ def login(request):
         if user is not None and user.is_active:
             auth.login(request, user)
             return "登入成功"
-    else: "有欄位沒有填"
+    else: return"有欄位沒有填"
 '''
 def register(request):
     if request.method == 'POST':
@@ -66,7 +61,7 @@ def Create_Member_View(request):
             return redirect('/')
     else:
         form = CustomUserCreationForm()
-    return render(request, 'index.html',{'form': form})
+    return render(request, 'create-member.html',{'form': form})
 
 def Create_Employee_View(request):
     title =  request.POST.get('title')
