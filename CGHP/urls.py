@@ -26,4 +26,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('menu/', include('PSMS.urls')),
     path('about/', about, name='about'),
+    
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

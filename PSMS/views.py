@@ -8,7 +8,7 @@ def home(request):
 
 def menu(request):
     pizzas = Pizza.objects.all()
-    return render(request,'menu-list.html', {'pizzas':pizzas})
+    return render(request, 'menu-list.html', {'pizzas':pizzas})
 
 def about(request):
     return render(request, 'about-us.html')
@@ -16,4 +16,4 @@ def about(request):
 def detail(request, no):
     pizza = get_object_or_404(Pizza, pk=no)
     cates = pizza.kind_chose
-    return render(request, 'menu-details.html',{'pizza':pizza, 'cates':cates})
+    return render(request, 'menu-details.html', {'pizza':pizza, 'cates':cates})

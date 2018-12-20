@@ -39,6 +39,8 @@ class Pizza(models.Model):
         validators=[MinValueValidator(1, '最低1分'), MaxValueValidator(5, '最多5分')])
     pic = models.ImageField(upload_to='pizza-imgae/', null=True)
     available = models.BooleanField(verbose_name='上架',default=False)
+    def starsCounter(self):
+        return range(int(self.stars))
     def __str__(self):
         return self.name
     def get_absolute_url(self):

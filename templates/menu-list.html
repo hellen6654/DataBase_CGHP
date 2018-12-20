@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load starsCount %}
 {% block title %} - Menu{% endblock %}
 {% block content %}
 <!-- Start Bradcaump area -->
@@ -61,27 +63,9 @@
                     <span>NT.{{pizza.price}}</span>
                   </div>
                   <ul class="rating">
-                    {% if pizza.stars == 1 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 2 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 3 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 4 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 5 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% endif %}
+                      {% for star in pizza|starsCount %}
+                      <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                      {% endfor %}
                   </ul>
                 </div>
               </div>

@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
-
 {% load static %}
-
+{% load starsCount %}
 {% block title %} - Detail{% endblock %}
 {% block content %}
 <!-- Start Bradcaump area -->
@@ -35,27 +34,9 @@
                   <li>NT.{{pizza.price}}</li>
                 </ul>
                 <ul class="rating">
-                  {% if pizza.stars == 1 %}
-                  <li><i class="zmdi zmdi-star"></i></li>
-                  {% elif pizza.stars == 2 %}
-                  <li><i class="zmdi zmdi-star"></i></li>
-                  <li><i class="zmdi zmdi-star"></i></li>
-                  {% elif pizza.stars == 3 %}
-                  <li><i class="zmdi zmdi-star"></i></li>
-                  <li><i class="zmdi zmdi-star"></i></li>
-                  <li><i class="zmdi zmdi-star"></i></li>
-                  {% elif pizza.stars == 4 %}
-                  <li><i class="zmdi zmdi-star"></i></li>
-                  <li><i class="zmdi zmdi-star"></i></li>
-                  <li><i class="zmdi zmdi-star"></i></li>
-                  <li><i class="zmdi zmdi-star"></i></li>
-                  {% elif pizza.stars == 5 %}
-                  <li><i class="zmdi zmdi-star"></i></li>
-                  <li><i class="zmdi zmdi-star"></i></li>
-                  <li><i class="zmdi zmdi-star"></i></li>
-                  <li><i class="zmdi zmdi-star"></i></li>
-                  <li><i class="zmdi zmdi-star"></i></li>
-                  {% endif %}
+                    {% for star in pizza|starsCount %}
+                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                    {% endfor %}
                 </ul>
                 <p>餡料：{{pizza.element}}</p>
                 <div class="product-action-wrap">
@@ -96,22 +77,7 @@
                     <div class="review__thumb">
                       <img src="{% static 'pizza/images/testimonial/rev/1.jpg' %}" alt="review images">
                     </div>
-                    <div class="review__details">
-                      <h3>Robart Hanson</h3>
-                      <div class="rev__meta d-flex justify-content-between">
-                        <span>Admin - February 13, 2018</span>
-                        <ul class="rating">
-                          <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                          <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                          <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                          <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                          <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                        </ul>
-                      </div>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipis icing elit, sed tdomino eiusd tempor incididunt
-                        ut labore et dolore magna aliqua. Ut e veniam, quis nostrud exercitation ullamco laboris nisi
-                        ut aliquiconsequat.</p>
-                    </div>
+                    
                   </div>
                   <!-- End Single Review -->
                   <!-- Start Single Review -->
@@ -124,7 +90,7 @@
                       <div class="rev__meta d-flex justify-content-between">
                         <span>Admin - February 13, 2018</span>
                         <ul class="rating">
-                          <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                          
                           <li><i class="fa fa-star" aria-hidden="true"></i></li>
                           <li><i class="fa fa-star" aria-hidden="true"></i></li>
                           <li><i class="fa fa-star" aria-hidden="true"></i></li>
