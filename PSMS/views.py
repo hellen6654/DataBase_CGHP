@@ -4,7 +4,8 @@ from MCS.views import MCS_View
 # Create your views here.
 
 def home(request):
-    return MCS_View(request, 'index.html')
+    return render(request, 'index.html')
+    #return MCS_View(request, 'index.html')
 
 def menu(request):
     pizzas = Pizza.objects.all()

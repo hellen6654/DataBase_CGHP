@@ -1,12 +1,31 @@
-<html>
-<head></head>
+{# templetes/register.html #}
+{% load static %}
+
+<!--
+  https://stackoverflow.com/questions/9352195/submitting-the-form-in-iframe-and-redirect-the-whole-page
+-->
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link rel="stylesheet" href="{% static '/css/register.css' %}">
+</head>
  <body>
-        <h1>註冊新帳號</h1>
-    
-        <form action="" method="post">
+        <form action="" method="post" target="_parent">
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" value="註冊">
+            
+            <div class="single-input">
+                <button type="submit" class="food__btn" name='register'><span>Sign Up</span></button>
+            </div>
         </form>
+
     </body>
+
 </html>

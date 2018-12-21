@@ -19,26 +19,32 @@ def login(request):
             user = auth.authenticate(email=email, password = password)
         except:
             # 回傳訊息
-            return "帳號密碼有誤"
+            return render(request, 'login.html')
+            #return "帳號密碼有誤"
             #return render(request, 'login.html')
         # 登入成功
         if user is not None and user.is_active:
             auth.login(request, user)
-            return "登入成功"
-    else: return"有欄位沒有填"
-'''
+            #return "登入成功"
+            return redirect('/')
+    #return"有欄位沒有填"
+    else:
+        return render(request, 'login.html')
+
 def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            return redirect('/accounts/login/')
+            member = Member.create(user=user)
+            member.save()
+            auth.login(request, user)
+            return redirect('/')
     else:
         form = CustomUserCreationForm()
     return render(request, 'register.html',{'form': form})
-'''
-def register(request):
-    if request.method == 'POST':
+    '''
+    if request.method == 'POST' and 'register' in request.POST:
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
@@ -49,6 +55,7 @@ def register(request):
     else:
         form = CustomUserCreationForm()
     return form
+    '''
 
 def Create_Member_View(request):
     if request.method == 'POST':

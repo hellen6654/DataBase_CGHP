@@ -191,7 +191,7 @@
                 <div class="accountbox__inner tab-content" id="myTabContent">                    
                     <!-- 登入窗口 -->
                     <div class="accountbox__login tab-pane fade show active" id="log" role="tabpanel" aria-labelledby="log-tab">
-                        <form action="" method="post">
+                        <form action="{% url "login" %}" method="post">
                             {% csrf_token %}
                             <div class="single-input">
                                 <input class="cr-round--lg" type="text" placeholder="User email" value="" name="login-email">
@@ -216,46 +216,7 @@
                     </div>
                     <!-- 註冊窗口 -->
                     <div class="accountbox__register tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <form action="#" method="post">
-                            {% csrf_token %}
-                            <!--
-                            <div class="single-input">
-                                <input class="cr-round--lg" type="email" placeholder="User email" value="" name="register-email">
-                            </div>
-                            <div class="single-input">
-                                <input class="cr-round--lg" type="password" placeholder="Password" value="" name="register-password1">
-                            </div>
-                            <div class="single-input">
-                                <input class="cr-round--lg" type="password" placeholder="Password Again" value="" name="register-password2">
-                            </div>
-                            <div class="single-input">
-                                <input class="cr-round--lg" type="text" placeholder="姓" value="" name="register-lastName">
-                            </div>
-                            <div class="single-input">
-                                <input class="cr-round--lg" type="text" placeholder="名" value="" name="register-firstName">
-                            </div>
-                            <div class="single-input">
-                                <input class="cr-round--lg" type="text" placeholder="身分證字號" value="" name="register-id_TW">
-                            </div>
-                            <div class="single-input">
-                                <input class="cr-round--lg" type="text" placeholder="電話號碼" value="" name="register-phonenumber">
-                            </div>
-                            <div class="single-input">
-                                <input class="cr-round--lg" type="text" placeholder="住址" value="" name="register-address">
-                            </div>
-                            <div class="single-input">
-                                <input class="cr-round--lg" type="number" min="0" max="100" placeholder="年齡" value="" name="register-age">
-                            </div>
-                            <div class="single-input">
-                                <input class="cr-round--lg" type="radio" value="male" name="gender">男
-                                <input class="cr-round--lg" type="radio" value="female" name="gender">女
-                            </div>
-                            -->
-                            {{ form.as_p }}
-                            <div class="single-input">
-                                <button type="submit" class="food__btn" name="register-member"><span>Sign Up</span></button>
-                            </div>
-                        </form>
+                        <iframe src="accounts/register" width="300" height="350" frameBorder="0"></iframe>
                     </div>
                     {% endif %}
                     <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
