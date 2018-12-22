@@ -191,6 +191,8 @@
                 <div class="accountbox__inner tab-content" id="myTabContent">                    
                     <!-- 登入窗口 -->
                     <div class="accountbox__login tab-pane fade show active" id="log" role="tabpanel" aria-labelledby="log-tab">
+                        <iframe src="accounts/login" width="320" height="300" frameBorder="0"></iframe>
+                        <!--
                         <form action="{% url 'login' %}" method="post">
                             {% csrf_token %}
                             <div class="single-input">
@@ -213,10 +215,11 @@
                                 </div>
                             </div>
                         </form>
+                        -->
                     </div>
                     <!-- 註冊窗口 -->
                     <div class="accountbox__register tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <iframe src="accounts/register" width="300" height="350" frameBorder="0"></iframe>
+                        <iframe src="accounts/register" width="320" height="350" frameBorder="0"></iframe>
                     </div>
                     {% endif %}
                     <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
