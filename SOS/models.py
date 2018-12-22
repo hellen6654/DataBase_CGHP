@@ -27,6 +27,6 @@ class Order(models.Model):
     details = models.TextField(null=False)
 
     # 訂單狀態
-    def GetState():
-    	if shipped_date!=null : return "已出貨"
+    def GetState(self):
+    	if self.shipped_date!=null : return "已出貨"
     	return "訂單處理中"

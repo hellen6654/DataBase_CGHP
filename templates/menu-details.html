@@ -41,12 +41,14 @@
                 <p>餡料：{{pizza.element}}</p>
                 <div class="product-action-wrap">
                   <div class="product-quantity">
-                    <form id='myform' method='POST' action='#'>
+                    <form id='myform' method='POST' action="{% url 'cart_add' pizza_id=pizza.pizza_no %}">
+                        {{ cart_form }}
+                        {% csrf_token %}
                       <div class="product-quantity">
                         <div class="cart-plus-minus">
                           <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
                           <div class="add__to__cart__btn">
-                            <a class="food__btn" href="cart.html">加到購物車</a>
+                            <input class="food__btn" type="submit" value="Add to cart">add to cart</a>
                           </div>
                         </div>
                       </div>

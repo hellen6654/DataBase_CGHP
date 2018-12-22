@@ -44,4 +44,4 @@ class Pizza(models.Model):
     def __str__(self):
         return self.name
     def get_absolute_url(self):
-        return reverse('detail', kwargs=[self.id])
+        return reverse('detail', args=[self.pizza_no])

@@ -7205,10 +7205,16 @@ div.slide__pizza img {
   color: #252525; }
 
 .table-content table td.product-quantity {
-  width: 180px; }
+  width: 180px; 
+  font-size: 15px;
+  font-weight: 700;
+  color: #777; }
 
 .table-content table td.product-remove {
-  width: 150px; }
+  width: 150px; 
+  font-size: 15px;
+  font-weight: 700;
+  color: #777; }
 
 .table-content table td.product-price {
   width: 130px; }

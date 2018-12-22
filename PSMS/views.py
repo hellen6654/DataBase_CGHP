@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Pizza
 from MCS.views import MCS_View
+from SCS.forms import CartAddProductForm
+from SCS.models import Cart
 # Create your views here.
 
 def home(request):
     return render(request, 'index.html')
-    #return MCS_View(request, 'index.html')
 
 def menu(request):
     pizzas = Pizza.objects.all()
@@ -17,4 +18,6 @@ def about(request):
 def detail(request, no):
     pizza = get_object_or_404(Pizza, pk=no)
     cates = pizza.kind_chose
-    return render(request, 'menu-details.html', {'pizza':pizza, 'cates':cates})
+    cart_form = CartAddProductForm()
+    return render(request, 'menu-details.html', {'pizza':pizza, 'cates':cates,
+                            'cart_form' : cart_form})
