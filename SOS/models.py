@@ -1,5 +1,6 @@
 from django.db import models
 from MCS.models import Member
+from PSMS.models import Pizza
 import django.utils.timezone as timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
 
@@ -8,25 +9,42 @@ class Order(models.Model):
     order_no = models.AutoField(
     	verbose_name='訂單編號', null=False, primary_key=True)
 
-    # 哪一個 會員 產生的訂單
     member_id = models.ForeignKey(
-        Member, verbose_name='會員編號', on_delete=models.CASCADE, null=False)
-    total_price = models.PositiveIntegerField(
-    	verbose_name='訂單總價', null=False)
+        Member, verbose_name='會員編號', on_delete=models.CASCADE, null=False) # 哪一個 會員 產生的訂單
+
     ordered_date = models.DateTimeField(
-    	verbose_name='訂單產生時間', default=timezone.now, null=False)
+    	verbose_name='訂單產生時間', auto_now_add=True, null=False)
 
-    # 若為 null 代表 尚未出貨
+    updated = models.DateTimeField(auto_now=True)
+
+    paid = models.BooleanField(default=False) # 若為 true 代表 尚未出貨
+
     shipped_date = models.DateTimeField(
-    	verbose_name='實際出貨時間', default=timezone.now)
-    discount = models.DecimalField(
-        verbose_name='訂單折扣', max_digits=2, decimal_places=2, null=False, 
-        validators=[MinValueValidator(0, '0 <= 訂單折扣 <= 1'), MaxValueValidator(1, '0 <= 訂單折扣 <= 1')])    
+    	verbose_name='實際出貨時間', default=timezone.now)   
+        
+    class Meta:
+        ordering = ['-ordered_date',]
 
-    # 訂單內容: 裡面有從購物車送出的字串資訊
-    details = models.TextField(null=False)
+    def __str__(self):
+        return 'Order {}'.format(self.order_no)
+
+    def get_total_cost(self):
+        return sum(item.get_cost() for item in self.items.all())
 
     # 訂單狀態
     def GetState(self):
-    	if self.shipped_date!=null : return "已出貨"
+    	if self.paid : 
+            return "已出貨"
     	return "訂單處理中"
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
+    pizza = models.ForeignKey(Pizza, related_name='order_items', on_delete=models.CASCADE)
+    price = models.DecimalField(max_digits=10, decimal_places=0)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return '{}'.format(self.id)
+
+    def get_cost(self):
+        return self.price * self.quantity
+

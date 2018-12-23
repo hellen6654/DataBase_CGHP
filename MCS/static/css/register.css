@@ -1,7 +1,3 @@
-html {
-    width: 275px;
-}
-
 body {
   font: 100% / 1.414 "Open Sans", "Roboto", arial, sans-serif;
   background: #e3e3e3;
@@ -242,6 +238,11 @@ form> p > input {
 
 input:focus{
     outline: none;
+}
+
+form {
+  margin: 0 auto;
+  width: 220px;
 }
 
 .errorlist {

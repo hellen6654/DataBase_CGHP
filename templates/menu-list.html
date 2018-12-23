@@ -102,27 +102,9 @@
                     <span>NT.{{pizza.price}}</span>
                   </div>
                   <ul class="rating">
-                    {% if pizza.stars == 1 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 2 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 3 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 4 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 5 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% endif %}
+                      {% for star in pizza|starsCount %}
+                      <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                      {% endfor %}
                   </ul>
                 </div>
               </div>
@@ -160,27 +142,9 @@
                       <span>NT.{{pizza.price}}</span>
                     </div>
                     <ul class="rating">
-                      {% if pizza.stars == 1 %}
-                      <li><i class="zmdi zmdi-star"></i></li>
-                      {% elif pizza.stars == 2 %}
-                      <li><i class="zmdi zmdi-star"></i></li>
-                      <li><i class="zmdi zmdi-star"></i></li>
-                      {% elif pizza.stars == 3 %}
-                      <li><i class="zmdi zmdi-star"></i></li>
-                      <li><i class="zmdi zmdi-star"></i></li>
-                      <li><i class="zmdi zmdi-star"></i></li>
-                      {% elif pizza.stars == 4 %}
-                      <li><i class="zmdi zmdi-star"></i></li>
-                      <li><i class="zmdi zmdi-star"></i></li>
-                      <li><i class="zmdi zmdi-star"></i></li>
-                      <li><i class="zmdi zmdi-star"></i></li>
-                      {% elif pizza.stars == 5 %}
-                      <li><i class="zmdi zmdi-star"></i></li>
-                      <li><i class="zmdi zmdi-star"></i></li>
-                      <li><i class="zmdi zmdi-star"></i></li>
-                      <li><i class="zmdi zmdi-star"></i></li>
-                      <li><i class="zmdi zmdi-star"></i></li>
-                      {% endif %}
+                        {% for star in pizza|starsCount %}
+                        <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                        {% endfor %}
                     </ul>
                   </div>
                 </div>
@@ -217,27 +181,9 @@
                     <span>NT.{{pizza.price}}</span>
                   </div>
                   <ul class="rating">
-                    {% if pizza.stars == 1 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 2 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 3 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 4 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 5 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% endif %}
+                      {% for star in pizza|starsCount %}
+                      <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                      {% endfor %}
                   </ul>
                 </div>
               </div>
@@ -275,27 +221,9 @@
                     <span>NT.{{pizza.price}}</span>
                   </div>
                   <ul class="rating">
-                    {% if pizza.stars == 1 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 2 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 3 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 4 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 5 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% endif %}
+                      {% for star in pizza|starsCount %}
+                      <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                      {% endfor %}
                   </ul>
                 </div>
               </div>
@@ -333,27 +261,9 @@
                     <span>NT.{{pizza.price}}</span>
                   </div>
                   <ul class="rating">
-                    {% if pizza.stars == 1 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 2 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 3 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 4 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 5 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% endif %}
+                      {% for star in pizza|starsCount %}
+                      <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                      {% endfor %}
                   </ul>
                 </div>
               </div>
@@ -391,34 +301,16 @@
                     <span>NT.{{pizza.price}} </span>
                   </div>
                   <ul class="rating">
-                    {% if pizza.stars == 1 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 2 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 3 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 4 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% elif pizza.stars == 5 %}
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    <li><i class="zmdi zmdi-star"></i></li>
-                    {% endif %}
+                      {% for star in pizza|starsCount %}
+                      <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                      {% endfor %}
                   </ul>
                 </div>
               </div>
             </div>
             {% endif %}
             {%empty%}
-            <p>本餐廳啥都沒賣！</p>
+            <p>拎背不爽賣東西！你咬我阿</p>
             {%endfor%}
 
           </div>
