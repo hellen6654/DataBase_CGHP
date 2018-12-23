@@ -87,7 +87,7 @@ class Member(models.Model):
 class Employee(models.Model):
     #'''
     user_id = models.OneToOneField(
-        CustomUser, verbose_name='會員的使用者編號', on_delete=models.CASCADE, null=False,related_name='Employee')
+        CustomUser, verbose_name='員工的使用者編號', on_delete=models.CASCADE, null=False,related_name='Employee')
     #'''
     # admin分配的帳號, 用來登入
     employee_id = models.UUIDField(

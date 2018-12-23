@@ -177,11 +177,34 @@
         <div class="accountbox-wrapper">
             <div class="accountbox text-left">
                 {% if request.user.is_authenticated %}
-                    <p>{{ request.user }}</p>
-                    <a href="{% url 'logout'%}"><button type="text" class="food__btn" ><span>登出</span></button></a>
-                    {% if request.user.is_staff %}
-                        <a href="{% url 'admin:index' %}"><button type="text" class="food__btn" ><span>後台</span></button></a>
-                    {% endif %}
+                    <ul class="nav accountbox__filters" id="myTab" role="tablist">
+                        <li>
+                            <a class="active" id="userAct-tab" data-toggle="tab" href="#userAct" role="tab" aria-controls="userAct" aria-selected="true">User Action</a>
+                        </li>
+                        {% if request.user.is_superuser %}
+                            <li>
+                                <a id="addEmployee-tab" data-toggle="tab" href="#addEmployee" role="tab" aria-controls="addEmployee" aria-selected="false">新增員工</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                    <div class="accountbox__inner tab-content" id="myTabContent">
+                        <div class="accountbox__login tab-pane fade show active" id="userAct" role="tabpanel" aria-labelledby="userAct-tab">
+                            <p>{{ request.user }}</p>
+                            <a href="{% url 'logout'%}"><button type="text" class="food__btn" ><span>登出</span></button></a>
+                            {% if request.user.is_staff %}
+                                <a href="{% url 'admin:index' %}">
+                                    <button type="text" class="food__btn" ><span>後台</span></button>
+                                </a>
+                            {% endif %}
+                        </div>
+                        <div class="accountbox__register tab-pane fade" id="addEmployee" role="tabpanel" aria-labelledby="addEmployee-tab">
+                            {% if request.user.is_superuser %}
+                            <a href="{% url 'register_Employee'%}">
+                                <iframe src="{% url 'register_Employee' %}" width="320" height="350" frameBorder="0"></iframe>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
                 {% else %}
                 <ul class="nav accountbox__filters" id="myTab" role="tablist">
                     <li>
@@ -191,7 +214,7 @@
                         <a id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Register</a>
                     </li>
                 </ul>
-                <div class="accountbox__inner tab-content" id="myTabContent">                    
+                <div class="accountbox__inner tab-content" id="myTabContent">
                     <!-- 登入窗口 -->
                     <div class="accountbox__login tab-pane fade show active" id="log" role="tabpanel" aria-labelledby="log-tab">
                         <iframe src="{% url 'login' %}" width="320" height="350" frameBorder="0"></iframe>

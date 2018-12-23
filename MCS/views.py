@@ -43,18 +43,20 @@ def register(request):
     return render(request, 'register.html',{'form': form})
 
 def Create_Employee_View(request):
-    title =  request.POST.get('title')
+    title =  request.POST.get('register-title')
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and title:
             user = form.save()
+            member = Member.create(user=user)
+            member.save()
             employee = Employee.create(user=user, title=title)
             employee.save()
             auth.login(request, user)
-            return render(request,'index.html')
+            return redirect('/')
     else:
         form = CustomUserCreationForm()
-    return render(request, 'create-employee.html',{'form': form})
+    return render(request, 'register-employee.html',{'form': form})
 
 def logout(request):
     auth.logout(request)

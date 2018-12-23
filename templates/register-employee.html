@@ -1,0 +1,27 @@
+{# templetes/register-employee.html #}
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+</head>
+ <body>
+        <form action="" method="post" target="_parent">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p>
+                <label for="register-title">職稱</label>
+                <input type="text" value="" name="register-title" id="register-title">
+            </p>
+            <div class="single-input">
+                <button type="submit" class="food__btn" name='register'><span>Sign Up</span></button>
+            </div>
+        </form>
+
+    </body>
+
+</html>
