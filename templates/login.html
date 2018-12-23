@@ -1,16 +1,36 @@
-<html>
-	<head>
-		
-	</head>
+{# templetes/login.html #}
+{% load static %}
 
-	<body>
-        <form action="" method="post">
-            {% csrf_token %}
-            <label for="login-email">Email:</label>
-            <input type="text" name="login-email" value="" id="email"> <br />
-            <label for="login-password">用戶密碼:</label>
-            <input type="password" name="lgoin-password" value="" id="password"> <br />
-            <input type="submit" value="登入" name="login" />
-        </form>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+    </head>
+
+    <body>
+        <script type="text/javascript">
+            var message = "{{ login_message }}";
+            if(message=="F")
+            {
+                alert("登入失敗");
+            }
+            if(message=="S")
+            {
+                alert("登入成功");
+                window.top.location.href = "{% url 'home' %}";
+            }
+        </script>
+            <form action="" method="post">
+                {% csrf_token %}
+                <p>
+                    <input type="text" placeholder="User email" value="" name="login-email">
+                </p>
+                <p>
+                    <input type="password" placeholder="Password" value="" name="login-password">
+                </p>
+                <p>
+                    <button type="submit" class="food__btn" name='login' id='btn_login'><span>Go</span></button>
+                </p>
+            </form>
     </body>
 </html>

@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Pizza
-from MCS.views import MCS_View
 from SCS.forms import CartAddProductForm
 from SCS.models import Cart
 # Create your views here.

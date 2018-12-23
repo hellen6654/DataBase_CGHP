@@ -178,7 +178,7 @@
             <div class="accountbox text-left">
                 {% if request.user.is_authenticated %}
                     <p>{{ request.user }}</p>
-                    <a href="accounts/logout/"><button type="text" class="food__btn" ><span>登出</span></button></a>
+                    <a href="{% url 'logout'%}"><button type="text" class="food__btn" ><span>登出</span></button></a>
                 {% else %}
                 <ul class="nav accountbox__filters" id="myTab" role="tablist">
                     <li>
@@ -191,32 +191,11 @@
                 <div class="accountbox__inner tab-content" id="myTabContent">                    
                     <!-- 登入窗口 -->
                     <div class="accountbox__login tab-pane fade show active" id="log" role="tabpanel" aria-labelledby="log-tab">
-                        <form action="{% url 'login' %}" method="post">
-                            {% csrf_token %}
-                            <div class="single-input">
-                                <input class="cr-round--lg" type="text" placeholder="User email" value="" name="login-email">
-                            </div>
-                            <div class="single-input">
-                                <input class="cr-round--lg" type="password" placeholder="Password" value="" name="login-password">
-                            </div>
-                            <div class="single-input">
-                                <button type="submit" class="food__btn" name='login'><span>Go</span></button>
-                            </div>
-                            <div class="accountbox-login__others">
-                                <h6>Or login with</h6>
-                                <div class="social-icons">
-                                    <ul>
-                                        <li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                                        <li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                                        <li class="pinterest"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </form>
+                        <iframe src="{% url 'login' %}" width="320" height="350" frameBorder="0"></iframe>
                     </div>
                     <!-- 註冊窗口 -->
                     <div class="accountbox__register tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <iframe src="accounts/register" width="300" height="350" frameBorder="0"></iframe>
+                        <iframe src="{% url 'register' %}" width="320" height="350" frameBorder="0"></iframe>
                     </div>
                     {% endif %}
                     <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
