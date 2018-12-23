@@ -73,6 +73,11 @@ class Member(models.Model):
     member_id = models.UUIDField(
         verbose_name='會員編號', null=False, primary_key=True,
         default=uuid.uuid4, editable=False)
+    '''
+    https://stackoverflow.com/questions/35807491/can-django-modeladmin-display-foreign-key-fields-in-the-add-and-change-pages
+    '''
+    def __str__(self):
+        return self.user_id.email
     
     @classmethod
     def create(cls, user):
@@ -96,6 +101,9 @@ class Employee(models.Model):
 
     title = models.CharField(
         verbose_name='員工職稱', max_length=8, null=False)
+
+    def __str__(self):
+        return self.user_id.email
 
     @classmethod
     def create(cls, user, title):

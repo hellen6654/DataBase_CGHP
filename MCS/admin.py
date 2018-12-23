@@ -28,6 +28,7 @@ admin.site.register(CustomUser, CustomUserAdmin)
 
 '''
 https://stackoverflow.com/questions/163823/can-list-display-in-a-django-modeladmin-display-attributes-of-foreignkey-field
+https://simpleisbetterthancomplex.com/tutorial/2017/03/14/how-to-create-django-admin-list-actions.html
 '''
 class MemberAdmin(admin.ModelAdmin):
     model = Member

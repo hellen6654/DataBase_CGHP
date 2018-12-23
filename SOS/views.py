@@ -9,12 +9,12 @@ from MCS.models import Member
 def order_create(request):
     cart = Cart(request)
     isError = False
-    mem=Member.objects.get(user_id = request.user)
     if request.method == 'POST':
         isMember = IsInGroup(user=request.user, groupName='Member')
         isError = not isMember
         if isMember:
-            order = Order.objects.create(member_id=mem)
+            member = Member.objects.get(user_id = request.user)
+            order = Order.objects.create(member_id=member)
             for item in cart:
                 OrderItem.objects.create(order=order, pizza=item['pizza'],
                                          price=item['price'],
