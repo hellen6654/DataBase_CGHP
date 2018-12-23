@@ -29,10 +29,17 @@
         <p>總計: ${{ cart.get_total_price }}</p>
     </div>
 
-    <form action="." method="post" class="order-form">
-        {{ form.as_p }}
-        <p><input type="submit" value="訂購"></p>
+    <form action="." method="post" class="order-form" id="formCheckOrder">
         {% csrf_token %}
+        {{ form.as_p }}
+        <p><input type="submit" value="訂購" id="btnCheckOrder"></p>
     </form>
+    <script type="text/javascript">
+        var isError = "{{ isError }}";
+        if(isError=="True")
+        {
+            alert("會員才可以進行結帳喔！請先登入為會員再進行操作。");
+        }
+    </script>
 {% endblock %}
 

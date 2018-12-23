@@ -110,3 +110,11 @@ class Employee(models.Model):
         # 創建新員工
         employee = cls(user_id=user, title=title)
         return employee
+
+'''
+https://stackoverflow.com/questions/4789021/in-django-how-do-i-check-if-a-user-is-in-a-certain-group
+'''
+def IsInGroup(user, groupName):
+    if user:
+        return user.groups.filter(name=groupName).exists()
+    return False
