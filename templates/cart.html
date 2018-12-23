@@ -3,97 +3,96 @@
 {% load starsCount %}
 {% block title %} - Cart{% endblock %}
 {% block content %}
-        <!-- Start Bradcaump area -->
-        <div class="ht__bradcaump__area bg-image--18">
-            <div class="ht__bradcaump__wrap d-flex align-items-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="bradcaump__inner text-center">
-                                <h2 class="bradcaump-title">購物車</h2>
-                            </div>
-                        </div>
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area bg-image--18">
+    <div class="ht__bradcaump__wrap d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">購物車</h2>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End Bradcaump area --> 
-        <!-- cart-main-area start -->
-        <div class="cart-main-area section-padding--lg bg--white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 ol-lg-12">
-                        <form action="#">               
-                            <div class="table-content table-responsive">
-                                <table class='cart'>
-                                    <thead>
-                                        <tr class="title-top">
-                                            <th class="product-thumbnail">圖片</th>
-                                            <th class="product-name">商品</th>
-                                            <th class="product-price">價格</th>
-                                            <th class="product-quantity">數量</th>
-                                            <th class="product-subtotal">總價格</th>
-                                            <th class="product-remove">刪除</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for item in cart %}
-                                            {% with pizza=item.pizza %}
-                                            <tr>
-                                                <td class="product-thumbnail">
-                                                    <a href="{{pizza.get_absolute_url}}">
-                                                        <img src="{{pizza.pic.url}}" alt="product img">
-                                                    </a>
-                                                </td>
-                                                <td class="product-name"><a href="{{pizza.get_absolute_url}}">{{ pizza.name }}</a></td>
-                                                <td class="product-price"><span class="amount">NT.{{ pizza.price }}</span></td>
-                                                <td class="product-quantity">{{ item.quantity }}</td>
-                                                <td class="product-subtotal">NT.{{ item.total_price }}</td>
-                                                <td class="product-remove">
-                                                    <a href="{% url 'cart_remove' pizza_id=pizza.pizza_no %}">X</a>
-                                                </td>
-                                            </tr>
-                                            {% endwith %}
-                                        {% endfor%}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </form> 
+    </div>
+</div>
+<!-- End Bradcaump area -->
+<!-- cart-main-area start -->
+<div class="cart-main-area section-padding--lg bg--white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 ol-lg-12">
+                <form action="#">
+                    <div class="table-content table-responsive">
+                        <table class='cart'>
+                            <thead>
+                                <tr class="title-top">
+                                    <th class="product-thumbnail">圖片</th>
+                                    <th class="product-name">商品</th>
+                                    <th class="product-price">價格</th>
+                                    <th class="product-quantity">數量</th>
+                                    <th class="product-subtotal">總價格</th>
+                                    <th class="product-remove">刪除</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in cart %}
+                                {% with pizza=item.pizza %}
+                                <tr>
+                                    <td class="product-thumbnail">
+                                        <a href="{{pizza.get_absolute_url}}">
+                                            <img src="{{pizza.pic.url}}" alt="product img">
+                                        </a>
+                                    </td>
+                                    <td class="product-name"><a href="{{pizza.get_absolute_url}}">{{ pizza.name }}</a></td>
+                                    <td class="product-price"><span class="amount">NT.{{ pizza.price }}</span></td>
+                                    <td class="product-quantity">{{ item.quantity }}</td>
+                                    <td class="product-subtotal">NT.{{ item.total_price }}</td>
+                                    <td class="product-remove">
+                                        <a href="{% url 'cart_remove' pizza_id=pizza.pizza_no %}">X</a>
+                                    </td>
+                                </tr>
+                                {% endwith %}
+                                {% endfor%}
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 offset-lg-6">
-                        <div class="cartbox__total__area">
-                            <div class="cartbox-total d-flex justify-content-between">
-                                <ul class="cart__total__list">
-                                    <li>購物車總數</li>
-                                    <li>小計</li>
-                                </ul>
-                                <ul class="cart__total__tk">
-                                    <li style="text-align:right">{{cart.get_total_quantity }}</li>
-                                    <li>NT.{{ cart.get_total_price }}</li>
-                                </ul>
-                            </div>
-                            <div class="cart__total__amount">
-                                <span>總計</span>
-                                <span>NT.{{ cart.get_total_price }}</span>
-                            </div>
-                                
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                        <div class="col-lg-6 offset-lg-6">
-                            <div class="cartbox__total__area">
-                                <p class="text-right">
-                                    <a href="{% url 'menu' %}" class="food__btn grey--btn theme--hover">
-                                        繼續購物</a>
-                                    <a href="{% url 'order_create' %}" class="food__btn grey--btn theme--hover">結帳</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>  
+                </form>
+            </div>
         </div>
+        <div class="row">
+            <div class="col-lg-6 offset-lg-6">
+                <div class="cartbox__total__area">
+                    <div class="cartbox-total d-flex justify-content-between">
+                        <ul class="cart__total__list">
+                            <li>購物車總數</li>
+                            <li>小計</li>
+                        </ul>
+                        <ul class="cart__total__tk">
+                            <li style="text-align:right">{{cart.get_total_quantity }}</li>
+                            <li>NT.{{ cart.get_total_price }}</li>
+                        </ul>
+                    </div>
+                    <div class="cart__total__amount">
+                        <span>總計</span>
+                        <span>NT.{{ cart.get_total_price }}</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 offset-lg-6">
+                <div class="cartbox__total__area">
+                    <p class="text-right">
+                        <a href="{% url 'menu' %}" class="food__btn grey--btn theme--hover">
+                            繼續購物</a>
+                        <a href="{% url 'order_create' %}" class="food__btn grey--btn theme--hover">結帳</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

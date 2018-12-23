@@ -46,9 +46,9 @@ class CustomUser(AbstractUser):
         verbose_name='使用者電話號碼', max_length=15, null=False, default='',
         validators=[RegexValidator(r'^[0-9+()-]+$')])
     address = models.CharField(
-        verbose_name='使用者住址', max_length=80, null=False,default='')
+        verbose_name='使用者住址', max_length=80, null=False, default='')
     age = models.PositiveIntegerField(
-        verbose_name='使用者年齡', blank=True,default=0)
+        verbose_name='使用者年齡', blank=True, default=0)
 
     gender = models.CharField(
         verbose_name='使用者性別', max_length=1, choices=GENDER_IN_USER_CHOICES, null=False, default=GENDER_MALE)

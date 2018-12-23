@@ -29,7 +29,17 @@ admin.site.register(CustomUser, CustomUserAdmin)
 
 @admin.register(Member)
 class MemberAdmin(admin.ModelAdmin):
-    pass
+    model = Member
+    list_display =('getUserEmail',)
+    ordering = ('user_id',)
+    search_fields = ('user_id',)
+
+    def getUserEmail(self, obj):
+        return obj.user_id.email
+
+    getUserEmail.admin_order_field = 'user_id'
+    getUserEmail.short_description = 'email'
+
 
 @admin.register(Employee)
 class EmployeeAdmin(admin.ModelAdmin):
