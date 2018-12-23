@@ -179,6 +179,9 @@
                 {% if request.user.is_authenticated %}
                     <p>{{ request.user }}</p>
                     <a href="{% url 'logout'%}"><button type="text" class="food__btn" ><span>登出</span></button></a>
+                    {% if request.user.is_staff %}
+                        <a href="{% url 'admin:index' %}"><button type="text" class="food__btn" ><span>後台</span></button></a>
+                    {% endif %}
                 {% else %}
                 <ul class="nav accountbox__filters" id="myTab" role="tablist">
                     <li>

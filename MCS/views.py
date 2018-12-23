@@ -8,6 +8,7 @@ from .forms import CustomUserCreationForm
 參考文件:
 http://dokelung-blog.logdown.com/posts/234437-django-notes-10-users-login-and-logout
 http://dokelung-blog.logdown.com/posts/235711-django-notes-12-template-advanced-technique
+https://stackoverflow.com/questions/45122421/refer-to-admin-site-using-url-admin-in-app-django
 """
 
 def login(request):

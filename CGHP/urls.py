@@ -21,7 +21,7 @@ from PSMS.views import home, about
 
 urlpatterns = [
     path('accounts/', include('MCS.urls')),
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
     path('cart/', include('SCS.urls')),
     path('menu/', include('PSMS.urls')),
     path('about/', about, name='about'),
