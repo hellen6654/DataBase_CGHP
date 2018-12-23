@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 """CGHP URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -28,3 +29,8 @@ urlpatterns = [
     path('order/', include('SOS.urls')),
     path('', home, name='home'),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+'''
+http://books.agiliq.com/projects/django-admin-cookbook/en/latest/change_text.html
+'''
+admin.site.site_header = '線上披薩訂購系統'
