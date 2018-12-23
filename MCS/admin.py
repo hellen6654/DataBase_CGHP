@@ -21,13 +21,14 @@ class CustomUserAdmin(DjangoUserAdmin):
             'fields': ('email', 'password1', 'password2','last_name', 'first_name','id_TW','phone_number','address','age','gender','discount'),
         }),
     )
-    list_display = ('email', 'last_name','first_name')
-    #search_fields = ('email', 'last_name','first_name')
-    ordering = ('email','id_TW')
+    list_display = ('email', 'id_TW', 'last_name','first_name',)
+    ordering = ('email','id_TW',)
 
 admin.site.register(CustomUser, CustomUserAdmin)
 
-@admin.register(Member)
+'''
+https://stackoverflow.com/questions/163823/can-list-display-in-a-django-modeladmin-display-attributes-of-foreignkey-field
+'''
 class MemberAdmin(admin.ModelAdmin):
     model = Member
     list_display =('getUserEmail',)
@@ -40,23 +41,16 @@ class MemberAdmin(admin.ModelAdmin):
     getUserEmail.admin_order_field = 'user_id'
     getUserEmail.short_description = 'email'
 
+admin.site.register(Member, MemberAdmin)
 
-@admin.register(Employee)
 class EmployeeAdmin(admin.ModelAdmin):
-    pass
-
-
-#admin.site.register(CustomUser, CustomUserAdmin)
-'''
-class EmployeeInline(admin.StackedInline):
     model = Employee
+    list_display =('getUserEmail', 'title', )
+    ordering = ('user_id',)
+    search_fields = ('user_id','title', )
 
-class MemberInline(admin.StackedInline):
-    model = Member
-
-#@admin.register(Member)
-class CustomUserAdmin(CustomUserAdmin):
-    inlines = [MemberInline, EmployeeInline]
-
-admin.site.register(CustomUser, CustomUserAdmin)
-'''
+    def getUserEmail(self, obj):
+        return obj.user_id.email
+    getUserEmail.admin_order_field = 'user_id'
+    getUserEmail.short_description = 'email'
+admin.site.register(Employee, EmployeeAdmin)

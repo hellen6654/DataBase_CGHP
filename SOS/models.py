@@ -7,20 +7,20 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 class Order(models.Model):
     order_no = models.AutoField(
-    	verbose_name='訂單編號', null=False, primary_key=True)
+        verbose_name='訂單編號', null=False, primary_key=True)
 
     member_id = models.ForeignKey(
         Member, verbose_name='會員編號', on_delete=models.CASCADE, null=False) # 哪一個 會員 產生的訂單
 
     ordered_date = models.DateTimeField(
-    	verbose_name='訂單產生時間', auto_now_add=True, null=False)
+        verbose_name='訂單產生時間', auto_now_add=True, null=False)
 
     updated = models.DateTimeField(auto_now=True)
 
     paid = models.BooleanField(default=False) # 若為 true 代表 尚未出貨
 
     shipped_date = models.DateTimeField(
-    	verbose_name='實際出貨時間', default=timezone.now)   
+        verbose_name='實際出貨時間', default=timezone.now)
         
     class Meta:
         ordering = ['-ordered_date',]
