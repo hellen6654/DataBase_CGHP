@@ -116,31 +116,15 @@
         </div> 
       </div>
       <div class="col-lg-4 col-md-12 col-sm-12 md--mt--40 sm--mt--40">
-        <div class="food__sidebar">
-          <!-- Start Search Area -->
-          <div class="food__search">
-            <h4 class="side__title">搜尋</h4>
-            <div class="serch__box">
-              <input type="text" placeholder="Search keyword">
-              <a href="#"><i class="fa fa-search"></i></a>
-            </div>
-          </div>
+        <div class="food__sidebar"> 
           <!-- Start Category Area -->
-          <div class="food__category__area mt--60">
+          <div class="food__category__area ">
             <h4 class="side__title">種類</h4>
             <ul class="food__category">
               {% for cate in cates %}
                 <li><a href="{% url 'menu' %}">{{ cate.1 }}</a></li>
               {% endfor %}
             </ul>
-          </div>
-          <!-- Start Sidebar Newsletter -->
-          <div class="sidebar__newsletter mt--60">
-            <h4 class="side__title">Newsletter</h4>
-            <div class="sidebar__inbox">
-              <input type="text" placeholder="Enter your E-mail">
-              <a href="#"><i class="fa fa-paper-plane"></i></a>
-            </div>
           </div>
           <!-- End Sidebar Newsletter -->
         </div>

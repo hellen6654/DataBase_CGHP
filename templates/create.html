@@ -3,43 +3,98 @@
 {% block title %} - Checkout {% endblock %}
 {% block content %}
 <!-- Start Bradcaump area -->
-    <div class="ht__bradcaump__area bg-image--18">
-        <div class="ht__bradcaump__wrap d-flex align-items-center">
+<div class="ht__bradcaump__area bg-image--18">
+    <div class="ht__bradcaump__wrap d-flex align-items-center">
         <div class="container">
             <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="bradcaump__inner text-center">
-                <h2 class="bradcaump-title">確認訂單</h2>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">確認訂單</h2>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<div class="cart-main-area section-padding--lg bg--white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 ol-lg-12">
+                <form action="#">
+                    <div class="table-content table-responsive">
+                        <table class='cart'>
+                            <h3>您的訂單</h3>
+                            <thead>
+                                <tr class="title-top">
+                                    <th class="product-thumbnail">圖片</th>
+                                    <th class="product-name">商品</th>
+                                    <th class="product-price">價格</th>
+                                    <th class="product-quantity">數量</th>
+                                    <th class="product-subtotal">總價格</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in cart %}
+                                {% with pizza=item.pizza %}
+                                <tr>
+                                    <td class="product-thumbnail">
+                                        <a href="{{pizza.get_absolute_url}}">
+                                            <img src="{{pizza.pic.url}}" alt="product img">
+                                        </a>
+                                    </td>
+                                    <td class="product-name"><a href="{{pizza.get_absolute_url}}">{{ pizza.name }}</a></td>
+                                    <td class="product-price"><span class="amount">NT.{{ pizza.price }}</span></td>
+                                    <td class="product-quantity">{{ item.quantity }}</td>
+                                    <td class="product-subtotal">NT.{{ item.total_price }}</td>
+                                </tr>
+                                {% endwith %}
+                                {% endfor%}
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-6 offset-lg-6">
+                <div class="cartbox__total__area">
+                    <div class="cartbox-total d-flex justify-content-between">
+                        <ul class="cart__total__list">
+                            <li>小計</li>
+                            <li>外送費</li>
+                            <li>折扣</li>
+                        </ul>
+                        <ul class="cart__total__tk">
+                            <li>NT.{{ cart.get_total_price }}</li>
+                            <li style="text-align:right">0</li>
+                            <li style="text-align:right">0</li>
+                        </ul>
+                    </div>
+                    <div class="cart__total__amount">
+                        <span>總計</span>
+                        <span>NT.{{ cart.get_total_price }}</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 offset-lg-6">
+                <div class="cartbox__total__area">
+                    <form action="." method="post" class="order-form text-right" id=" formCheckOrder">
+                        {% csrf_token %}
+                        <p><input type="submit" value="訂購" id="btnCheckOrder" class="food__btn"></p>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="order-info">
-        <h3>您的訂單</h3>
-        <ul>
-            {% for item in cart %}
-                <li>
-                    {{ item.pizza.name }}: {{ item.quantity }} x {{ item.product.name }}
-                    <span>${{ item.total_price }}</span>
-                </li>
-            {% endfor %}
-        </ul>
-        <p>總計: ${{ cart.get_total_price }}</p>
-    </div>
+</div>
 
-    <form action="." method="post" class="order-form" id="formCheckOrder">
-        {% csrf_token %}
-
-        <p><input type="submit" value="訂購" id="btnCheckOrder"></p>
-    </form>
-    <script type="text/javascript">
-        var isError = "{{ isError }}";
-        if(isError=="True")
-        {
-            alert("會員才可以進行結帳喔！請先登入為會員再進行操作。");
-        }
-    </script>
+<script type="text/javascript">
+    var isError = "{{ isError }}";
+    if (isError == "True") {
+        alert("會員才可以進行結帳喔！請先登入為會員再進行操作。");
+    }
+</script>
 {% endblock %}
-

@@ -2,8 +2,37 @@
 {% load static %}
 {% block title %} - Thankyou {% endblock %}
 {% block content %}
-<h1>Thank you</h1>
-<p>Your order has been successfully completed. Your order number is
-    <strong>{{ order.order_no }}</strong>.</p>
-{% endblock %}
 
+
+<section class="fd__service__area bg-image--2 section-padding--xlg">
+    <div class="container">
+        <div class="service__wrapper bg--white">
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    <div class="section__title service__align--left">
+                        <h2 class="title__line">感謝您的訂購</h2>
+                        <p>你所訂購的物品會在短時間內送達</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt--30">
+                <!-- Start Single Service -->
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="service">
+                        <div class="service__title">
+                            <div class="ser__icon">
+                                <img src="{% static 'pizza/images/icon/color-icon/2.png' %}" alt="icon image">
+                            </div>
+                            <h2><a>您的訂單已成立</a></h2>
+                        </div>
+                        <div class="service__details">
+                            <h3>您的訂單的號碼為<strong>{{ order.order_no }}</strong></h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

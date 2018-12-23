@@ -18,11 +18,12 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls.static import static
 from django.conf import settings
-from PSMS.views import home, about
+from PSMS.views import home, about , search
 
 urlpatterns = [
     path('accounts/', include('MCS.urls')),
     path('admin/', admin.site.urls, name='admin'),
+    path('search/', search, name='search'),
     path('cart/', include('SCS.urls')),
     path('menu/', include('PSMS.urls')),
     path('about/', about, name='about'),
