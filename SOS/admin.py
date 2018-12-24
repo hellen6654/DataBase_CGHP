@@ -1,11 +1,12 @@
 from django.contrib import admin
 from .models import OrderItem, Order, Discount, DiscountFare, DiscountOrder
-from .forms import DiscountFareForm, DiscountFareInlineFormSet
+from .forms import DiscountFareForm, DiscountOrderForm, DiscountInlineFormSet
 
 '''
 https://stackoverflow.com/questions/1732151/override-save-model-on-django-inlinemodeladmin
 https://stackoverflow.com/questions/28515470/wsgirequest-object-has-no-attribute-get
 https://stackoverflow.com/questions/1470811/django-disallow-can-delete-on-genericstackedinline
+https://stackoverflow.com/questions/6506439/django-change-inlines-based-on-select-option
 '''
 
 class OrderItemInline(admin.TabularInline):
@@ -21,7 +22,7 @@ class OrderAdmin(admin.ModelAdmin):
 class DiscountFareInline(admin.TabularInline):
     model = DiscountFare
     form = DiscountFareForm
-    formset = DiscountFareInlineFormSet
+    formset = DiscountInlineFormSet
     def get_formset(self, request, obj=None, **kwargs):
         formset = super(DiscountFareInline, self).get_formset(request, obj, **kwargs)
         formset.request = request
@@ -29,6 +30,12 @@ class DiscountFareInline(admin.TabularInline):
 
 class DiscountOrderInline(admin.TabularInline):
     model = DiscountOrder
+    form = DiscountOrderForm
+    formset = DiscountInlineFormSet
+    def get_formset(self, request, obj=None, **kwargs):
+        formset = super(DiscountOrderInline, self).get_formset(request, obj, **kwargs)
+        formset.request = request
+        return formset
 
 @admin.register(Discount)
 class DiscountAdmin(admin.ModelAdmin):
