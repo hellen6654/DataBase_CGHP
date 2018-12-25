@@ -17,10 +17,10 @@ class Order(models.Model):
 
     updated = models.DateTimeField(auto_now=True)
 
-    paid = models.BooleanField(default=False) # 若為 true 代表 尚未出貨
+    paid = models.BooleanField(verbose_name='是否付款',default=False) # 若為 true 代表 出貨
 
     shipped_date = models.DateTimeField(
-        verbose_name='實際出貨時間', default=timezone.now)
+        verbose_name='實際出貨時間', blank=True, null=True)
         
     class Meta:
         ordering = ['-ordered_date',]
@@ -36,6 +36,8 @@ class Order(models.Model):
     	if self.paid : 
             return "已出貨"
     	return "訂單處理中"
+
+
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
     pizza = models.ForeignKey(Pizza, related_name='order_items', on_delete=models.CASCADE)

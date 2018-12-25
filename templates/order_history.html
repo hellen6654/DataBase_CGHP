@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load starsCount %}
+{% block title %} - History{% endblock %}
+{% block content %}
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area bg-image--18">
+  <div class="ht__bradcaump__wrap d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="bradcaump__inner text-center">
+            <h2 class="bradcaump-title">歷史訂單</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Start Menu Grid Area -->
+<section class="food__menu__grid__area section-padding--lg">
+  <div class="container">
+    <div class="row mt--30">
+      <div class="col-lg-12">
+        <div class="fd__tab__content tab-content" id="nav-tabContent">
+          <!-- Start Single Content ALL kind of Pizza -->
+          <div class="row">
+            <div class="col-md-12 col-sm-12 ol-lg-12">
+              <div class="table-content table-responsive">
+                <div class="col-lg-12 col-md-12 ">
+                  <table class="cart">
+                    <thead>
+                      <tr class="title-top">
+                        <th class="product-subtotal">訂單編號</th>
+                        <th class="product-subtotal">下訂時間</th>
+                        <th class="product-subtotal">是否付款</th>
+                        <th class="product-subtotal">出貨時間</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for search_order in result %}
+
+                      <tr>
+                        <td class="product-subtotal"><a href="{% url 'order_detail' search_order.order_no %}">{{ search_order.order_no }}</a></td>
+                        <td class="product-subtotal">{{ search_order.ordered_date }}</td>
+                        <td class="product-subtotal">{{ search_order.paid }}</td>
+                        <td class="product-subtotal">{{ search_order.shipped_date }}</td>
+                      </tr>
+                      {% empty %}
+                      <h1>您還沒有購買過本商店的產品！</h1>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

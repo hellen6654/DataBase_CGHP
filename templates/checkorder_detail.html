@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load starsCount %}
+{% block title %} - OrderDetail{% endblock %}
+{% block content %}
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area bg-image--18">
+    <div class="ht__bradcaump__wrap d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">訂單確認</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Bradcaump area -->
+<div class="cart-main-area section-padding--lg bg--white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 ol-lg-12">
+                <div class="table-content table-responsive">
+                    <table class='cart'>
+                        <thead>
+
+                            <tr class="title-top">
+                                <th class="product-subtotal">訂單編號</th>
+                                <th class="product-subtotal">顧客帳號</th>
+                                <th class="product-subtotal">下訂時間</th>
+                                <th class="product-subtotal">總金額</th>
+                                <th class="product-subtotal">是否付款</th>
+                                <th class="product-subtotal">出貨時間</th>
+                                <th class="product-subtotal">出貨時間</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            {% for order in total_order %}
+                            <tr>
+                                <td class="product-subtotal"><a href="{% url 'order_detail' order.order_no %}">
+                                        {{ order.order_no }}</a></td>
+                                <td class="product-subtotal">{{ order.member_id }}</td>
+                                <td class="product-subtotal">{{ order.ordered_date }}</td>
+                                <td class="product-subtotal">{{ order.get_total_cost }}</td>
+                                <td class="product-subtotal">{{ order.paid }}</td>
+                                <td class="product-subtotal">{{ order.shipped_date }}</td>
+                            </tr>
+                            {% empty %}
+                            <h2>目前沒有訂單！</h2>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+</div>
+
+{% endblock %}

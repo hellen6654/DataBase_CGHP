@@ -191,10 +191,14 @@
                         <div class="accountbox__login tab-pane fade show active" id="userAct" role="tabpanel" aria-labelledby="userAct-tab">
                             <p>{{ request.user }}</p>
                             <a href="{% url 'logout'%}"><button type="text" class="food__btn" ><span>登出</span></button></a>
+                            <a href="{% url 'order_history' %}"><button type="text" class="food__btn" ><span>歷史訂單</span></button></a>
                             {% if request.user.is_staff %}
                                 <a href="{% url 'admin:index' %}">
                                     <button type="text" class="food__btn" ><span>後台</span></button>
                                 </a>
+                                <a href="{% url 'check_order' %}">
+                                        <button type="text" class="food__btn" ><span>確認訂單</span></button>
+                                    </a>
                             {% endif %}
                         </div>
                         <div class="accountbox__register tab-pane fade" id="addEmployee" role="tabpanel" aria-labelledby="addEmployee-tab">

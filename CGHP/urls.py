@@ -28,6 +28,7 @@ urlpatterns = [
     path('menu/', include('PSMS.urls')),
     path('about/', about, name='about'),
     path('order/', include('SOS.urls')),
+    path('checkorder/',include('FSMS.urls')),
     path('', home, name='home'),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
