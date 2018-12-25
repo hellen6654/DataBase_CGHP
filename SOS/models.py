@@ -88,7 +88,7 @@ class Order(models.Model):
     # 運費
     def getFare(self):
         BASIC_FARE = 60
-        if isFreeShipping:
+        if self.isFreeShipping:
             return 0
         return BASIC_FARE
 

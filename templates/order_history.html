@@ -33,6 +33,7 @@
                       <tr class="title-top">
                         <th class="product-subtotal">訂單編號</th>
                         <th class="product-subtotal">下訂時間</th>
+                        <th class="product-subtotal">總金額</th>
                         <th class="product-subtotal">是否付款</th>
                         <th class="product-subtotal">出貨時間</th>
                       </tr>
@@ -43,6 +44,7 @@
                       <tr>
                         <td class="product-subtotal"><a href="{% url 'order_detail' search_order.order_no %}">{{ search_order.order_no }}</a></td>
                         <td class="product-subtotal">{{ search_order.ordered_date }}</td>
+                        <td class="product-subtotal">{{ search_order.get_total_cost }}</td>
                         <td class="product-subtotal">{{ search_order.paid }}</td>
                         <td class="product-subtotal">{{ search_order.shipped_date }}</td>
                       </tr>
