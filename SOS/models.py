@@ -63,7 +63,7 @@ class Order(models.Model):
 
     updated = models.DateTimeField(auto_now=True)
 
-    paid = models.BooleanField(default=False) # 若為 true 代表 尚未出貨
+    paid = models.BooleanField(verbose_name='是否付款',default=False) # 若為 true 代表 出貨
 
     shipped_date = models.DateTimeField(
         verbose_name='實際出貨時間', default=timezone.now)
