@@ -5,3 +5,7 @@ adminadmin
 會員帳密
 user
 user1234
+
+=========
+除了admin後面新增的使用者
+密碼全部都是asdjkl123
