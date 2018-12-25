@@ -55,11 +55,11 @@ def order_history(request):
 def order_detail(request, order_no):
     order = Order.objects.get(order_no=order_no)
     orderitem = OrderItem.objects.filter(order=order)
-
     if request.method == 'POST':
         order.paid = True
         order.shipped_date = timezone.now()
-        CheckOrder.objects.create(order_no=order, empolyee_id=Employee.objects.get(user_id=request.user),
+        order.save()
+        CheckOrder.objects.create(order_no=order, employee_id=Employee.objects.get(user_id=request.user),
                                   profits=order.get_total_cost())
         return redirect('check_order')
 
