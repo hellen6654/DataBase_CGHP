@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import OrderItem, Order, Discount, DiscountFare, DiscountOrder
+from .models import OrderItem, Order, Discount, DiscountItem, DiscountFare, DiscountOrder
 from .forms import DiscountFareForm, DiscountOrderForm, DiscountInlineFormSet
 
 '''
@@ -13,11 +13,26 @@ class OrderItemInline(admin.TabularInline):
     model = OrderItem
     raw_id_fields = ['pizza']
 
+class DiscountItemInline(admin.TabularInline):
+    model = DiscountItem
+    extra = 0
+    can_delete = False
+    readonly_fields = ('discount',)
+
+
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['order_no', 'member_id', 'ordered_date', 'updated', 'paid', 'shipped_date']
+    list_display = ['order_no', 'member_id', 'total', 'ordered_date', 'updated', 'paid', 'shipped_date','fare']
     list_filter = ['paid', 'ordered_date', 'updated']
-    inlines = [OrderItemInline]
+    inlines = [OrderItemInline, DiscountItemInline]
+
+    def total(self, obj):
+        return obj.get_total_cost()
+    total.short_description = '總價'
+
+    def fare(self, obj):
+        return obj.getFare()
+    fare.short_description = '運費'
 
 class DiscountFareInline(admin.TabularInline):
     model = DiscountFare

@@ -48,8 +48,6 @@ def Create_Employee_View(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid() and title:
             user = form.save()
-            member = Member.create(user=user)
-            member.save()
             employee = Employee.create(user=user, title=title)
             employee.save()
             auth.login(request, user)
