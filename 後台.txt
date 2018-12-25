@@ -21,6 +21,8 @@ asdjkl123
 test@test.com
 adminadmin
 
+employee@example.com
+asdjkl123
 
 =========
 除了admin後面新增的使用者
