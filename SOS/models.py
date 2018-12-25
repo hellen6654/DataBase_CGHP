@@ -1,4 +1,3 @@
-# -*- coding: UTF-8 -*-
 from django.db import models
 from MCS.models import Member
 from PSMS.models import Pizza
@@ -23,10 +22,9 @@ class Order(models.Model):
         verbose_name='實際出貨時間', default=timezone.now)
 
     isFreeShipping = models.BooleanField(default=False, verbose_name='是否免運', editable=False)
-
     discountRate = models.DecimalField(
         max_digits=3, decimal_places=2, default=1, null=False, verbose_name='折扣',editable=False)
-
+    
     class Meta:
         ordering = ['-ordered_date',]
 
@@ -99,7 +97,6 @@ class Discount(models.Model):
 
     def __str__(self):
         return self.name
-
     def getCondition(self, order):
         if self.kind == 'shipping':
             condition = order.get_total_cost() >= DiscountFare.objects.get(discount_code=self).sill
@@ -126,17 +123,15 @@ class DiscountFare(models.Model):
 
     sill = models.PositiveIntegerField(
         verbose_name='目標金額', null=False, unique=True)
-
     def __str__(self):
         return str(self.discount_code.code)
 
     # when sill changed
     def save(self, *args, **kwargs):
         items = DiscountItem.objects.filter(discount=self.discount_code)
-        # 儲存 一律刪除原先的資料
         if items.exists():
             items.delete()
-        # 判斷符合條件的Pizza
+        # 儲存 一律刪除原先的資料
         for eachOrder in Order.objects.all():
             if eachOrder.get_total_cost() >= self.sill:
                 eachOrder.isFreeShipping = True
@@ -171,6 +166,7 @@ class DiscountOrder(models.Model):
         items = DiscountItem.objects.filter(discount=self.discount_code)
         if items.exists():
             items.delete()
+
         for eachOrder in Order.objects.all():
             if eachOrder in Order.objects.filter(ordered_date__range=self.getDateRange()):
                 eachOrder.discountRate = self.rate

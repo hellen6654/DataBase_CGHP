@@ -39,6 +39,7 @@
           <!-- Start Single Content ALL kind of Pizza -->
           <div class="food__list__tab__content tab-pane fade show active" id="nav-all" role="tabpanel">
             {%for pizza in pizzas%}
+            {% if pizza.available %}
             <div class="single__food__list d-flex wow fadeInUp">
               <div class="food__list__thumb">
                 <a href="{% url 'detail' no=pizza.pizza_no %}">
@@ -70,6 +71,7 @@
                 </div>
               </div>
             </div>
+            {% endif%}
             {%empty%}
             <p>本餐廳啥都沒賣！</p>
             {%endfor%}
@@ -78,7 +80,7 @@
           <!-- Start Single Content Beef kind of Pizza -->
           <div class="food__list__tab__content tab-pane fade" id="nav-Beef" role="tabpanel">
             {%for pizza in pizzas%}
-            {% if pizza.kind == 'Beef' %}
+            {% if pizza.kind == 'Beef' and pizza.available %}
             <div class="single__food__list d-flex wow fadeInUp">
               <div class="food__list__thumb">
                 <a href="{% url 'detail' no=pizza.pizza_no %}">
@@ -118,7 +120,7 @@
           <!-- Start Single Content Chicken kind of Pizza -->
           <div class="food__list__tab__content tab-pane fade" id="nav-Chicken" role="tabpanel">
             {%for pizza in pizzas%}
-              {% if pizza.kind in 'Chicken' %}
+              {% if pizza.kind in 'Chicken' and pizza.available %}
               <div class="single__food__list d-flex wow fadeInUp">
                 <div class="food__list__thumb">
                   <a href="{% url 'detail' no=pizza.pizza_no %}">
@@ -157,7 +159,7 @@
           <!-- Start Single Content Mix kind of Pizza -->
           <div class="food__list__tab__content tab-pane fade" id="nav-Mix" role="tabpanel">
             {%for pizza in pizzas%}
-            {% if pizza.kind == 'Mix' %}
+            {% if pizza.kind == 'Mix' and pizza.available %}
             <div class="single__food__list d-flex wow fadeInUp">
               <div class="food__list__thumb">
                 <a href="{% url 'detail' no=pizza.pizza_no %}">
@@ -197,7 +199,7 @@
           <!-- Start Single Content Pork kind of Pizza -->
           <div class="food__list__tab__content tab-pane fade" id="nav-Pork" role="tabpanel">
             {%for pizza in pizzas%}
-            {% if pizza.kind == 'Pork' %}
+            {% if pizza.kind == 'Pork' and pizza.available%}
             <div class="single__food__list d-flex wow fadeInUp">
               <div class="food__list__thumb">
                 <a href="{% url 'detail' no=pizza.pizza_no %}">
@@ -237,7 +239,7 @@
           <!-- Start Single Content Seafood kind of Pizza -->
           <div class="food__list__tab__content tab-pane fade" id="nav-Seafood" role="tabpanel">
             {%for pizza in pizzas%}
-            {% if pizza.kind == 'Seafood' %}
+            {% if pizza.kind == 'Seafood' and pizza.available%}
             <div class="single__food__list d-flex wow fadeInUp">
               <div class="food__list__thumb">
                 <a href="{% url 'detail' no=pizza.pizza_no %}">
@@ -277,7 +279,7 @@
           <!-- Start Single Content Vegetable of Pizza-->
           <div class="food__list__tab__content tab-pane fade" id="nav-Vegetable" role="tabpanel">
             {% for pizza in pizzas %}
-            {% if pizza.kind == 'Vegetable' %}
+            {% if pizza.kind == 'Vegetable' and pizza.available%}
             <div class="single__food__list d-flex wow fadeInUp">
               <div class="food__list__thumb">
                 <a href="{% url 'detail' no=pizza.pizza_no %}">

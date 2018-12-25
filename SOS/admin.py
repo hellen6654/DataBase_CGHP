@@ -50,8 +50,6 @@ class DiscountOrderInline(admin.TabularInline):
     model = DiscountOrder
     form = DiscountOrderForm
     formset = DiscountInlineFormSet
-    can_delete = False
-    extra = 1
     def get_formset(self, request, obj=None, **kwargs):
         formset = super(DiscountOrderInline, self).get_formset(request, obj, **kwargs)
         formset.request = request

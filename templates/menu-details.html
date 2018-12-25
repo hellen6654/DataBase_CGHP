@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load myrange %}
 {% load starsCount %}
 {% block title %} - Detail{% endblock %}
 {% block content %}
@@ -41,9 +42,13 @@
                 <p>餡料：{{pizza.element}}</p>
                 <div class="product-action-wrap">
                   <div class="product-quantity">
-                    <form id='myform' method='POST' action="{% url 'cart_add' pizza_id=pizza.pizza_no %}">
-                        {{ cart_form }}
+                    <form id='myform' method='POST' action="{% url 'cart_add' pizza.pizza_no %}">
                         {% csrf_token %}
+                        <select name="quantity" id="quantity">
+                          {% for i in pizza.in_stock|myrange %}
+                            <option value="{{i}}">{{i}}</option>
+                          {% endfor%}
+                        </select>
                       <div class="product-quantity">
                         <div>
                           <!-- <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1"> -->
@@ -73,40 +78,7 @@
               <!-- End Single Content -->
               <!-- Start Single Content -->
               <div class="single__dec__content fade" id="nav-breakfast" role="tabpanel">
-                <div class="review__wrapper">
-                  <!-- Start Single Review -->
-                  <div class="single__review d-flex">
-                    <div class="review__thumb">
-                      <img src="{% static 'pizza/images/testimonial/rev/1.jpg' %}" alt="review images">
-                    </div>
-                    
-                  </div>
-                  <!-- End Single Review -->
-                  <!-- Start Single Review -->
-                  <div class="single__review d-flex">
-                    <!--
-                    <div class="review__thumb">
-                      <img src="images/testimonial/rev/2.jpg" alt="review images">
-                    </div>
-                    -->
-                    <div class="review__details">
-                      <h3>Robart Hanson</h3>
-                      <div class="rev__meta d-flex justify-content-between">
-                        <span>Admin - February 13, 2018</span>
-                        <ul class="rating">
-                          
-                          <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                          <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                          <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                          <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                        </ul>
-                      </div>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipis icing eltempor incididunt labore et dolore
-                        magna aliqua. Ut enim adm veniam, quis nostrud exercitation.</p>
-                    </div>
-                  </div>
-                  <!-- End Single Review -->
-                </div>
+                
               </div>
               <!-- End Single Content -->
             </div>

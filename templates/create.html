@@ -66,13 +66,13 @@
                         </ul>
                         <ul class="cart__total__tk">
                             <li>NT.{{ cart.get_total_price }}</li>
-                            <li style="text-align:right">0</li>
-                            <li style="text-align:right">0</li>
+                            <li style="text-align:right">60</li>
+                            <li style="text-align:right">{{discount}}</li>
                         </ul>
                     </div>
                     <div class="cart__total__amount">
                         <span>總計</span>
-                        <span>NT.{{ cart.get_total_price }}</span>
+                        <span>NT.{{ total_price }}</span>
                     </div>
 
                 </div>

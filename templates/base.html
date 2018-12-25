@@ -3,219 +3,229 @@
 
 <!doctype html>
 <html class="no-js" lang="zxx">
+
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>CGHP{% block title %}{% endblock %}</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>CGHP{% block title %}{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- Favicons -->
-	<link rel="shortcut icon" href="{% static 'pizza/images/favicon.ico' %}">
-	<link rel="apple-touch-icon" href="{% static 'pizza/images/icon.png' %}">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="{% static 'pizza/images/favicon.ico' %}">
+    <link rel="apple-touch-icon" href="{% static 'pizza/images/icon.png' %}">
 
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="{% static 'pizza/css/bootstrap.min.css' %}">
-	<link rel="stylesheet" href="{% static 'pizza/css/plugins.css' %}">
-	<link rel="stylesheet" href="{% static 'pizza/style.css' %}">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{% static 'pizza/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'pizza/css/plugins.css' %}">
+    <link rel="stylesheet" href="{% static 'pizza/style.css' %}">
 
-	<!-- Modernizer js -->
-	<script src="{% static 'pizza/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+    <!-- Modernizer js -->
+    <script src="{% static 'pizza/js/vendor/modernizr-3.5.0.min.js' %}"></script>
 </head>
+
 <body>
-	<!-- Add your site or application content here -->
+    <!-- Add your site or application content here -->
     <!-- Main wrapper -->
-	<div class="wrapper" id="wrapper">
+    <div class="wrapper" id="wrapper">
         <!-- Start Header Area -->
         <header class="htc__header bg--white">
-                <!-- Start Mainmenu Area -->
-                <div id="sticky-header-with-topbar" class="mainmenu__wrap sticky__header">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-2 col-sm-4 col-md-6 order-1 order-lg-1">
-                                <div class="logo">
-                                    <a href="{% url 'home' %}">
-                                        <img src="{% static 'pizza/images/logo/foody.png' %}" alt="logo images">
-                                    </a>
-                                </div>
+            <!-- Start Mainmenu Area -->
+            <div id="sticky-header-with-topbar" class="mainmenu__wrap sticky__header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-2 col-sm-4 col-md-6 order-1 order-lg-1">
+                            <div class="logo">
+                                <a href="{% url 'home' %}">
+                                    <img src="{% static 'pizza/images/logo/foody.png' %}" alt="logo images">
+                                </a>
                             </div>
-                            <div class="col-lg-9 col-sm-4 col-md-2 order-3 order-lg-2">
-                                <div class="main__menu__wrap">
-                                    <nav class="main__menu__nav d-none d-lg-block">
-                                        <ul class="mainmenu">
-                                            <li><a href="{% url 'home' %}">Home</a></li>
-                                            <li><a href="{% url 'about' %}">About</a></li>
-                                            <li><a href="{% url 'menu' %}">Menu</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
+                        </div>
+                        <div class="col-lg-9 col-sm-4 col-md-2 order-3 order-lg-2">
+                            <div class="main__menu__wrap">
+                                <nav class="main__menu__nav d-none d-lg-block">
+                                    <ul class="mainmenu">
+                                        <li><a href="{% url 'home' %}">Home</a></li>
+                                        <li><a href="{% url 'about' %}">About</a></li>
+                                        <li><a href="{% url 'menu' %}">Menu</a></li>
+                                    </ul>
+                                </nav>
                             </div>
-                            <div class="col-lg-1 col-sm-4 col-md-4 order-2 order-lg-3">
-                                <div class="header__right d-flex justify-content-end">
-                                    <div class="log__in">
-                                        <a class="accountbox-trigger" href="#"><i class="zmdi zmdi-account-o"></i></a>
-                                    </div>
-                                    <div class="shopping__cart">
-                                        <a href="{% url 'cart' %}"><i class="zmdi zmdi-shopping-basket"></i></a>
-                                        <!-- <div class="shop__qun">
+                        </div>
+                        <div class="col-lg-1 col-sm-4 col-md-4 order-2 order-lg-3">
+                            <div class="header__right d-flex justify-content-end">
+                                <div class="log__in">
+                                    <a class="accountbox-trigger" href="#"><i class="zmdi zmdi-account-o"></i></a>
+                                </div>
+                                <div class="shopping__cart">
+                                    <a href="{% url 'cart' %}"><i class="zmdi zmdi-shopping-basket"></i></a>
+                                    <!-- <div class="shop__qun">
                                             <span>0</span>
                                         </div> -->
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Mobile Menu -->
-                            <div class="mobile-menu d-block d-lg-none"></div>
-                        <!-- Mobile Menu -->
                     </div>
+                    <!-- Mobile Menu -->
+                    <div class="mobile-menu d-block d-lg-none"></div>
+                    <!-- Mobile Menu -->
                 </div>
-                <!-- End Mainmenu Area -->
+            </div>
+            <!-- End Mainmenu Area -->
         </header>
         <!-- End Header Area -->
-    {% block content %}
-    {% endblock %}
+        {% block content %}
+        {% endblock %}
         <!-- Start Footer Area -->
         <footer class="footer__area footer--1">
-                <div class="footer__wrapper bg__cat--1 section-padding--lg">
-                    <div class="container">
-                        <div class="row">
-                            <!-- Start Single Footer -->
-                            <div class="col-md-6 col-lg-4 col-sm-12">
-                                <div class="footer">
-                                    <h2 class="ftr__title">關於</h2>
-                                    <div class="footer__inner">
-                                        <div class="ftr__details">
-                                            <div class="ftr__address__inner">
-                                                <div class="ftr__address">
-                                                    <div class="ftr__address__icon">
-                                                        <i class="zmdi zmdi-home"></i>
-                                                    </div>
-                                                    <div class="frt__address__details">
-                                                        <p>1, Sec. 3, Zhongxiao E. Rd., Taipei 10608 Taiwan, R.O.C.</p>
-                                                    </div>
+            <div class="footer__wrapper bg__cat--1 section-padding--lg">
+                <div class="container">
+                    <div class="row">
+                        <!-- Start Single Footer -->
+                        <div class="col-md-6 col-lg-4 col-sm-12">
+                            <div class="footer">
+                                <h2 class="ftr__title">關於</h2>
+                                <div class="footer__inner">
+                                    <div class="ftr__details">
+                                        <div class="ftr__address__inner">
+                                            <div class="ftr__address">
+                                                <div class="ftr__address__icon">
+                                                    <i class="zmdi zmdi-home"></i>
                                                 </div>
-                                                <div class="ftr__address">
-                                                    <div class="ftr__address__icon">
-                                                        <i class="zmdi zmdi-phone"></i>
-                                                    </div>
-                                                    <div class="frt__address__details">
-                                                        <p><a href="#">(886-2) 2771-2171 #6500</a></p>
-                                                    </div>
-                                                </div>
-                                                <div class="ftr__address">
-                                                    <div class="ftr__address__icon">
-                                                        <i class="zmdi zmdi-email"></i>
-                                                    </div>
-                                                    <div class="frt__address__details">
-                                                        <p><a href="#">oia@ntut.edu.tw</a></p>
-                                                    </div>
+                                                <div class="frt__address__details">
+                                                    <p>1, Sec. 3, Zhongxiao E. Rd., Taipei 10608 Taiwan, R.O.C.</p>
                                                 </div>
                                             </div>
-                                            <ul class="social__icon">
-                                                <li><a href="https://www.facebook.com/taipeitech1912/"><i class="zmdi zmdi-facebook"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-google"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-instagram"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-rss"></i></a></li>
-                                            </ul>
+                                            <div class="ftr__address">
+                                                <div class="ftr__address__icon">
+                                                    <i class="zmdi zmdi-phone"></i>
+                                                </div>
+                                                <div class="frt__address__details">
+                                                    <p><a href="#">(886-2) 2771-2171 #6500</a></p>
+                                                </div>
+                                            </div>
+                                            <div class="ftr__address">
+                                                <div class="ftr__address__icon">
+                                                    <i class="zmdi zmdi-email"></i>
+                                                </div>
+                                                <div class="frt__address__details">
+                                                    <p><a href="#">oia@ntut.edu.tw</a></p>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Footer -->
-                            <!-- Start Single Footer -->
-                            <div class="col-md-6 col-lg-4 col-sm-12 sm--mt--40">
-                                <div class="footer gallery">
-                                    <h2 class="ftr__title">產品</h2>
-                                    <div class="footer__inner">
-                                        <ul class="sm__gallery__list">
-                                            <li><img src="{% static 'pizza/images/pizza-sm-img/sm1.jpg' %}" alt="gallery images"></li>
-                                            <li><img src="{% static 'pizza/images/pizza-sm-img/sm2.jpg' %}" alt="gallery images"></li>
-                                            <li><img src="{% static 'pizza/images/pizza-sm-img/sm3.jpg' %}" alt="gallery images"></li>
-                                            <li><img src="{% static 'pizza/images/pizza-sm-img/sm4.jpg' %}" alt="gallery images"></li>
+                                        <ul class="social__icon">
+                                            <li><a href="https://www.facebook.com/taipeitech1912/"><i class="zmdi zmdi-facebook"></i></a></li>
+                                            <li><a href="#"><i class="zmdi zmdi-google"></i></a></li>
+                                            <li><a href="#"><i class="zmdi zmdi-instagram"></i></a></li>
+                                            <li><a href="#"><i class="zmdi zmdi-rss"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            <!-- End Single Footer -->
-                            <!-- Start Single Footer -->
-                            <div class="col-md-6 col-lg-4 col-sm-12 md--mt--40 sm--mt--40">
-                                <div class="footer">
-                                    <h2 class="ftr__title">營業時間</h2>
-                                    <div class="footer__inner">
-                                        <ul class="opening__time__list">
-                                            <li>星期日<span>.......</span>公休</li>
-                                            <li>星期一<span>.......</span>11am to 09pm</li>
-                                            <li>星期二<span>.......</span>11am to 09pm</li>
-                                            <li>星期三<span>.......</span>11am to 09pm</li>
-                                            <li>星期四<span>.......</span>11am to 09pm</li>
-                                            <li>星期五<span>.......</span>11am to 09pm</li>
-                                            <li>星期六<span>.......</span>11am to 10pm</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Footer -->
                         </div>
-                    </div>
-                </div>
-                <div class="copyright bg--theme">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="copyright__inner">
-                                    <div class="cpy__right--left">
-                                        <p>@All Right Unreserved.</p>
-                                    </div>
+                        <!-- End Single Footer -->
+                        <!-- Start Single Footer -->
+                        <div class="col-md-6 col-lg-4 col-sm-12 sm--mt--40">
+                            <div class="footer gallery">
+                                <h2 class="ftr__title">產品</h2>
+                                <div class="footer__inner">
+                                    <ul class="sm__gallery__list">
+                                        <li><img src="{% static 'pizza/images/pizza-sm-img/sm1.jpg' %}" alt="gallery images"></li>
+                                        <li><img src="{% static 'pizza/images/pizza-sm-img/sm2.jpg' %}" alt="gallery images"></li>
+                                        <li><img src="{% static 'pizza/images/pizza-sm-img/sm3.jpg' %}" alt="gallery images"></li>
+                                        <li><img src="{% static 'pizza/images/pizza-sm-img/sm4.jpg' %}" alt="gallery images"></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
+                        <!-- End Single Footer -->
+                        <!-- Start Single Footer -->
+                        <div class="col-md-6 col-lg-4 col-sm-12 md--mt--40 sm--mt--40">
+                            <div class="footer">
+                                <h2 class="ftr__title">營業時間</h2>
+                                <div class="footer__inner">
+                                    <ul class="opening__time__list">
+                                        <li>星期日<span>.......</span>公休</li>
+                                        <li>星期一<span>.......</span>11am to 09pm</li>
+                                        <li>星期二<span>.......</span>11am to 09pm</li>
+                                        <li>星期三<span>.......</span>11am to 09pm</li>
+                                        <li>星期四<span>.......</span>11am to 09pm</li>
+                                        <li>星期五<span>.......</span>11am to 09pm</li>
+                                        <li>星期六<span>.......</span>11am to 10pm</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Footer -->
                     </div>
                 </div>
+            </div>
+            <div class="copyright bg--theme">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="copyright__inner">
+                                <div class="cpy__right--left">
+                                    <p>@All Right Unreserved.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
 
         <!-- 登入登出的那個視窗 -->
         <div class="accountbox-wrapper">
             <div class="accountbox text-left">
                 {% if request.user.is_authenticated %}
-                    <ul class="nav accountbox__filters" id="myTab" role="tablist">
-                        <li>
-                            <a class="active" id="userAct-tab" data-toggle="tab" href="#userAct" role="tab" aria-controls="userAct" aria-selected="true">User Action</a>
-                        </li>
-                        {% if request.user.is_superuser %}
-                            <li>
-                                <a id="addEmployee-tab" data-toggle="tab" href="#addEmployee" role="tab" aria-controls="addEmployee" aria-selected="false">新增員工</a>
-                            </li>
+                <ul class="nav accountbox__filters" id="myTab" role="tablist">
+                    <li>
+                        <a class="active" id="userAct-tab" data-toggle="tab" href="#userAct" role="tab" aria-controls="userAct"
+                            aria-selected="true">User Action</a>
+                    </li>
+                    {% if request.user.is_superuser %}
+                    <li>
+                        <a id="addEmployee-tab" data-toggle="tab" href="#addEmployee" role="tab" aria-controls="addEmployee"
+                            aria-selected="false">新增員工</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <div class="accountbox__inner tab-content" id="myTabContent">
+                    <div class="accountbox__login tab-pane fade show active" id="userAct" role="tabpanel"
+                        aria-labelledby="userAct-tab">
+                        <p>{{ request.user }}</p>
+                        <a href="{% url 'logout'%}"><button type="text" class="food__btn"><span>登出</span></button></a>
+                        <a href="{% url 'order_history' %}"><button type="text" class="food__btn"><span>歷史訂單</span></button></a>
+                        {% if request.user.is_staff %}
+                        <a href="{% url 'admin:index' %}">
+                            <button type="text" class="food__btn"><span>後台</span></button>
+                        </a>
+                        <a href="{% url 'check_order' %}">
+                            <button type="text" class="food__btn"><span>確認訂單</span></button>
+                        </a>
+                        <a href="{% url 'money_report' %}">
+                            <button type="text" class="food__btn"><span>財務報表</span></button>
+                        </a>
                         {% endif %}
-                    </ul>
-                    <div class="accountbox__inner tab-content" id="myTabContent">
-                        <div class="accountbox__login tab-pane fade show active" id="userAct" role="tabpanel" aria-labelledby="userAct-tab">
-                            <p>{{ request.user }}</p>
-                            <a href="{% url 'logout'%}"><button type="text" class="food__btn" ><span>登出</span></button></a>
-                            <a href="{% url 'order_history' %}"><button type="text" class="food__btn" ><span>歷史訂單</span></button></a>
-                            {% if request.user.is_staff %}
-                                <a href="{% url 'admin:index' %}">
-                                    <button type="text" class="food__btn" ><span>後台</span></button>
-                                </a>
-                                <a href="{% url 'check_order' %}">
-                                        <button type="text" class="food__btn" ><span>確認訂單</span></button>
-                                    </a>
-                            {% endif %}
-                        </div>
-                        <div class="accountbox__register tab-pane fade" id="addEmployee" role="tabpanel" aria-labelledby="addEmployee-tab">
-                            {% if request.user.is_superuser %}
-                            <a href="{% url 'register_Employee'%}">
-                                <iframe src="{% url 'register_Employee' %}" width="320" height="350" frameBorder="0"></iframe>
-                            </a>
-                            {% endif %}
-                        </div>
                     </div>
+                    <div class="accountbox__register tab-pane fade" id="addEmployee" role="tabpanel" aria-labelledby="addEmployee-tab">
+                        {% if request.user.is_superuser %}
+                        <a href="{% url 'register_Employee'%}">
+                            <iframe src="{% url 'register_Employee' %}" width="320" height="350" frameBorder="0"></iframe>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
                 {% else %}
                 <ul class="nav accountbox__filters" id="myTab" role="tablist">
                     <li>
-                        <a class="active" id="log-tab" data-toggle="tab" href="#log" role="tab" aria-controls="log" aria-selected="true">Login</a>
+                        <a class="active" id="log-tab" data-toggle="tab" href="#log" role="tab" aria-controls="log"
+                            aria-selected="true">Login</a>
                     </li>
                     <li>
-                        <a id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Register</a>
+                        <a id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                            aria-selected="false">Register</a>
                     </li>
                 </ul>
                 <div class="accountbox__inner tab-content" id="myTabContent">
@@ -236,7 +246,7 @@
         <div class="cartbox-wrap">
             <div class="cartbox text-right">
                 <button class="cartbox-close"><i class="zmdi zmdi-close"></i></button>
-                <div class="cartbox__inner text-left">    
+                <div class="cartbox__inner text-left">
                     <div class="cartbox__buttons">
                         <a class="food__btn" href="{% url 'cart' %}"><span>View cart</span></a>
                     </div>
@@ -244,12 +254,13 @@
             </div>
         </div>
     </div>
-	<!-- //Main wrapper -->
-	<!-- JS Files -->
-	<script src="{% static 'pizza/js/vendor/jquery-3.2.1.min.js' %}"></script>
-	<script src="{% static 'pizza/js/popper.min.js' %}"></script>
-	<script src="{% static 'pizza/js/bootstrap.min.js' %}"></script>
-	<script src="{% static 'pizza/js/plugins.js' %}"></script>
-	<script src="{% static 'pizza/js/active.js' %}"></script>
+    <!-- //Main wrapper -->
+    <!-- JS Files -->
+    <script src="{% static 'pizza/js/vendor/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'pizza/js/popper.min.js' %}"></script>
+    <script src="{% static 'pizza/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'pizza/js/plugins.js' %}"></script>
+    <script src="{% static 'pizza/js/active.js' %}"></script>
 </body>
+
 </html>

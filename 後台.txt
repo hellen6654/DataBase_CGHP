@@ -3,8 +3,24 @@ admin@example.com
 adminadmin
 
 會員帳密
-user
-user1234
+employee123@example.com
+asdjkl123
+
+mary@example.com
+asdjkl123
+
+t@example.com	
+asdjkl123
+
+test1234@example.com	
+asdjkl123
+
+test@example.com	
+asdjkl123
+
+test@test.com
+adminadmin
+
 
 =========
 除了admin後面新增的使用者
