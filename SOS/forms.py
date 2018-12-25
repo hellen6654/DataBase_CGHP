@@ -15,7 +15,7 @@ class DiscountFareForm(forms.ModelForm):
 class DiscountOrderForm(forms.ModelForm):
     class Meta:
         model = DiscountOrder
-        fields = ['startDate', 'endDate']
+        fields = ['startDate', 'endDate','rate']
 
 class DiscountInlineFormSet(BaseInlineFormSet):
     def save_new(self, form, commit=True):

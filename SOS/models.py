@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 from django.db import models
 from MCS.models import Member
 from PSMS.models import Pizza
@@ -23,6 +24,9 @@ class Order(models.Model):
 
     isFreeShipping = models.BooleanField(default=False, verbose_name='是否免運', editable=False)
 
+    discountRate = models.DecimalField(
+        max_digits=3, decimal_places=2, default=1, null=False, verbose_name='折扣',editable=False)
+
     class Meta:
         ordering = ['-ordered_date',]
 
@@ -46,7 +50,19 @@ class Order(models.Model):
         return BASIC_FARE
 
     def getTotalPrice(self):
-        return self.get_total_cost()+self.getFare()
+        total = self.get_total_cost() * float(self.discountRate) + self.getFare()
+        return int(total)
+    #'''
+    #當儲存訂單時, 應該要判斷是否符合條件
+    def save(self, *args, **kwargs):
+        items = DiscountItem.objects.filter(order=self)
+        if items.exists():
+            items.delete()
+        for eachDiscount in Discount.objects.all():
+            if eachDiscount.getCondition(order=self):
+                DiscountItem.objects.create(order=self, discount=eachDiscount)
+        super(Order, self).save(*args, **kwargs)
+    #'''
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
@@ -84,34 +100,56 @@ class Discount(models.Model):
     def __str__(self):
         return self.name
 
+    def getCondition(self, order):
+        if self.kind == 'shipping':
+            condition = order.get_total_cost() >= DiscountFare.objects.get(discount_code=self).sill
+            order.isFreeShipping = condition
+            return condition
+        elif self.kind == 'seasoning':
+            realDiscount = DiscountOrder.objects.get(discount_code=self)
+            condition = order.ordered_date in realDiscount.getDateRange()
+            if condition:
+                order.discountRate = realDiscount.rate
+            else:
+                order.discountRate = 1
+            return condition
+
 class DiscountItem(models.Model):
-    order = models.ForeignKey(Order, related_name='theOrder', on_delete=models.CASCADE)
-    discount = models.ForeignKey(Discount, related_name='theDiscount', on_delete=models.CASCADE, editable=False)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    discount = models.ForeignKey(Discount, on_delete=models.CASCADE, editable=False)
     def __str__(self):
         return '{}'.format(self.id)
 
 class DiscountFare(models.Model):
     discount_code = models.OneToOneField(
-        Discount, verbose_name='折扣代碼', primary_key=True, on_delete=models.CASCADE)
+        Discount, verbose_name='折扣代碼', primary_key=True, on_delete=models.CASCADE, related_name='DiscountFare')
 
     sill = models.PositiveIntegerField(
         verbose_name='目標金額', null=False, unique=True)
 
+    def __str__(self):
+        return str(self.discount_code.code)
+
+    # when sill changed
     def save(self, *args, **kwargs):
         items = DiscountItem.objects.filter(discount=self.discount_code)
+        # 儲存 一律刪除原先的資料
         if items.exists():
             items.delete()
-
+        # 判斷符合條件的Pizza
         for eachOrder in Order.objects.all():
             if eachOrder.get_total_cost() >= self.sill:
                 eachOrder.isFreeShipping = True
                 eachOrder.save()
                 DiscountItem.objects.create(order=eachOrder, discount=self.discount_code)
+            else:
+                eachOrder.isFreeShipping = False
+                eachOrder.save()
         super(DiscountFare, self).save(*args, **kwargs)
 
 class DiscountOrder(models.Model):
     discount_code = models.OneToOneField(
-        Discount, verbose_name='折扣代碼', primary_key=True, on_delete=models.CASCADE)
+        Discount, verbose_name='折扣代碼', primary_key=True, on_delete=models.CASCADE, related_name='DiscountOrder')
 
     rate = models.DecimalField(
         max_digits=3, decimal_places=2, default=1, null=False, verbose_name='折扣率',
@@ -123,15 +161,22 @@ class DiscountOrder(models.Model):
     endDate = models.DateTimeField(
         verbose_name='優惠截止日期', null=False)
 
-    def getRate(self):
-        return float(self.discount_code.rate)
+    def __str__(self):
+        return str(self.discount_code.code)
+
+    def getDateRange(self):
+        return (self.startDate, self.endDate)
 
     def save(self, *args, **kwargs):
         items = DiscountItem.objects.filter(discount=self.discount_code)
         if items.exists():
             items.delete()
-
-        for eachOrder in Order.objects.filter(ordered_date__range(self.startDate, self.endDate)):
-            DiscountItem.objects.create(order=eachOrder, discount=self.discount_code)
-
+        for eachOrder in Order.objects.all():
+            if eachOrder in Order.objects.filter(ordered_date__range=self.getDateRange()):
+                eachOrder.discountRate = self.rate
+                eachOrder.save()
+                DiscountItem.objects.create(order=eachOrder, discount=self.discount_code)
+            else:
+                eachOrder.discountRate = 1
+                eachOrder.save()
         super(DiscountOrder, self).save(*args, **kwargs)

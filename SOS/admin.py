@@ -22,7 +22,8 @@ class DiscountItemInline(admin.TabularInline):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['order_no', 'member_id', 'total', 'ordered_date', 'updated', 'paid', 'shipped_date','fare']
+    #list_display = ['order_no', 'member_id', 'total', 'ordered_date', 'updated', 'paid', 'shipped_date','fare']
+    list_display = ['order_no', 'member_id', 'total', 'ordered_date', 'fare','discountRate']
     list_filter = ['paid', 'ordered_date', 'updated']
     inlines = [OrderItemInline, DiscountItemInline]
 
@@ -38,6 +39,8 @@ class DiscountFareInline(admin.TabularInline):
     model = DiscountFare
     form = DiscountFareForm
     formset = DiscountInlineFormSet
+    can_delete = False
+    extra = 1
     def get_formset(self, request, obj=None, **kwargs):
         formset = super(DiscountFareInline, self).get_formset(request, obj, **kwargs)
         formset.request = request
@@ -47,6 +50,8 @@ class DiscountOrderInline(admin.TabularInline):
     model = DiscountOrder
     form = DiscountOrderForm
     formset = DiscountInlineFormSet
+    can_delete = False
+    extra = 1
     def get_formset(self, request, obj=None, **kwargs):
         formset = super(DiscountOrderInline, self).get_formset(request, obj, **kwargs)
         formset.request = request
@@ -54,5 +59,5 @@ class DiscountOrderInline(admin.TabularInline):
 
 @admin.register(Discount)
 class DiscountAdmin(admin.ModelAdmin):
-    list_display = ['name','kind','description',]
+    list_display = ['code', 'name','kind','description',]
     inlines = [DiscountFareInline, DiscountOrderInline,]
