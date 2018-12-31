@@ -13,9 +13,9 @@
 ![](https://i.imgur.com/bAU3LQM.png)
 
 - 安裝完 就完成了python 虛擬環境(Visualenv)的建置
-- 
+
 - 裡面包含了環境所需的所有插件 : django、pillow
-- 
+ 
 - 使用Visualenv的好處
     多到說不完我就不說了,自己去google
 
