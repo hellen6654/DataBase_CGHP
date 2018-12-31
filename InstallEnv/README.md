@@ -9,7 +9,6 @@
 
 - 執行 python-3.7.0-amd64並在安裝第一步務必把最下面的Add python 3.7 to PATH打勾 再安裝
 ![](https://i.imgur.com/rlCsjiv.png)
-- ※如果有安裝python 
 ## Step2.執行Install_Env
 ![](https://i.imgur.com/bAU3LQM.png)
 
