@@ -1,1 +1,1 @@
-cmd /k "pip install virtualenvwrapper-win & mkvirtualenv CGHP & pip install django==2.1.3"
+cmd /k "pip install virtualenvwrapper-win & mkvirtualenv CGHP & pip install django==2.1.3 & pip install Pillow""
